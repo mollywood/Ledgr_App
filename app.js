@@ -26,6 +26,11 @@ app.use(bodyParser.urlencoded({ extended : false }))
 
 // PUBLIC FACING SIDE //
 
+// Index
+app.get('/index', function(req,res){
+    res.render('index')
+})
+
 // Product Page
 app.get('/productpage', function(req,res){
 
