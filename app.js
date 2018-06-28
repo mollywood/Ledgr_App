@@ -70,27 +70,29 @@ app.get('/updatecategories', function(req,res){
 
 app.post('/updatecategories', function(req,res){
 
-    let thisCategory = {
+    let newCategory = {
         productCategory : req.body.productCategory,
         productGender : req.body.productGender
     }
 
-    models.Products.create(newCategory).then(function(){
+    models.productcategories.create(newCategory).then(function(){
 
     res.redirect('/updatecategories')
     })
 })
 
 models.productcategories.findOne().then(function(productcategories){
-    console.log(productcategories)
+    console.log('Finding categories')
 })
 
 
 // Update Products
 app.get('/updateproducts', function(req,res){
-    //models.products.findAll().then(function(products){
-        res.render('updateproducts')
-    //})
+
+    models.productcategories.findAll().then(function(productcategories){
+        res.render('updateproducts', {cats: productcategories})
+    
+    })
 })
 
 app.post('/updateproducts', function(req,res){
@@ -102,24 +104,31 @@ app.post('/updateproducts', function(req,res){
         productPrice : req.body.productPrice,
         productColor : req.body.productColor,
         productURL : req.body.productURL,
-        productQuantity: req.body.productQuantity
-
+        productQuantity: req.body.productQuantity,
+        productCategoryID: req.body.productCategoryID
     }
 
+    console.log(newProduct)
     models.Products.create(newProduct).then(function(){
     res.redirect('/updateproducts')
 })
 })
 
 models.Products.findOne().then(function(Products){
-    console.log(Products)
+    console.log('Finding products')
 })
 
 
 // Stock On Hand
 app.get('/stockonhand', function(req,res){
 
-    models.Products.findAll().then(function(products){
+    models.Products.findAll({
+        include: [{
+            model: models.productcategories,
+            as : 'productcategories'
+        }]
+    }).then(function(products){
+        console.log(products[17].productcategories, "productCategory")
         res.render('stockonhand', {list: products})
     })
 })
@@ -150,7 +159,7 @@ app.post('/contactus', function(req,res){
 })
 
 models.ContactUs.findOne().then(function(ContactUs){
-    console.log(ContactUs)
+    console.log('ContactUs')
 })
 
 

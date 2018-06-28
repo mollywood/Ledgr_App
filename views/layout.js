@@ -20,3 +20,8 @@ document.addEventListener('DOMContentLoaded', function() {
   var instance = M.FloatingActionButton.getInstance(elem);
 
   M.toast({html: 'Added to cart!'})
+
+  document.addEventListener('DOMContentLoaded', function() {
+    var elems = document.querySelectorAll('.modal');
+    var instances = M.Modal.init(elems, options);
+  });
