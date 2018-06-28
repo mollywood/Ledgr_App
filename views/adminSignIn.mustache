@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+  </head>
+  <body>
+
+    <h2>Sign Up</h2>
+    <form action='/adminSignUp' method='post'>
+      <label for="adminUsername">Username: </label>
+      <input class="textinput" type="text" name="adminUsername" placeholder="Username...">
+
+      <label for="password">Password: </label>
+      <input class="textinput" type="text" name="adminPassword" placeholder="Password...">
+      <input class="adminSubmitBtn" type="submit" />
+    </form>
+
+    <h2>Sign In</h2>
+    <form action="/adminSignIn" method="post">
+      <label for="adminUsernameSI">Username: </label>
+      <input class="textinput" type="text" name="adminUsernameSI" placeholder="Username...">
+
+      <label for="adminPasswordSI">Password: </label>
+      <input class="textinput" type="text" name="adminPasswordSI" placeholder="Password...">
+      <input class="submitBtnSI" type="submit" />
+    </form>
+
+  </body>
+</html>
