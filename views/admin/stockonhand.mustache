@@ -1,6 +1,5 @@
 <head>
-    <title>Ledgr | Admin Page</title>
-    <link rel="icon" href="">
+    <title>Ledgr | Stock On Hand</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-rc.2/css/materialize.min.css">
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <link rel="stylesheet" type="text/css" href="public/adminstyles.css">
@@ -9,25 +8,53 @@
 
 <nav>
     <div class="nav-wrapper cyan accent-4">
-        <a href="/adminlanding" class="brand-logo">
+        <a href="./adminlanding" class="brand-logo">
             <i class="large material-icons prefix">business</i>
             Ledgr
         </a>
         <ul id="nav-mobile" class="right hide-on-med-and-down">
-            <li><a href="/updatecategories">Update Product Categories</a></li>
-            <li><a href="/updateproducts">Update Products</a></li>
-            <li><a href="/stockonhand">Stock On Hand</a></li>
+            <li><a href="./updatecategories">Update Product Categories</a></li>
+            <li><a href="./updateproducts">Update Products</a></li>
+            <li class="active"><a href="./stockonhand">Stock On Hand</a></li>
             <li><a href="/contactus">Contact Us</a></li>
+            <li><form action="/adminLogOut" method="post">
+              <a><button>Logout</button></a></li>
+            </form>
         </ul>
     </div>
 </nav>
 
-<h1>Welcome to Ledgr!</h1>
+<h1>Stock On Hand</h1>
 <div class="container">
     <div class="row">
-        <p>Lorem ipsum dolor amet flexitarian echo park actually, readymade bitters fam incididunt beard tofu wayfarers mustache sartorial chartreuse. Sed mustache readymade celiac truffaut dolore iPhone in vexillologist hoodie aute VHS id prism lorem. Tattooed synth jianbing cray, lo-fi cliche ut next level mustache edison bulb iceland squid est. Mustache elit poke, sunt aliqua yr occaecat snackwave. Laborum id sartorial iceland tbh 3 wolf moon. In labore YOLO affogato activated charcoal.</p>
-
-        <p>Cornhole slow-carb lo-fi id plaid. In nostrud palo santo, deep v hot chicken non occupy dreamcatcher yuccie. Aliquip in letterpress scenester commodo, tote bag 90's etsy shoreditch wolf jean shorts. Small batch readymade cloud bread listicle. Aute brooklyn lyft chillwave raclette affogato letterpress adaptogen forage ut butcher fashion axe.</p>
+        <table>
+            <thead>
+                <tr>
+                    <th>Category</th>
+                    <th>Item</th>
+                    <th>Size</th>
+                    <th>Price</th>
+                    <th>Color</th>
+                    <th>Quantity</th>
+                    <th>Restock</th>
+                </tr>
+            <thead>
+            <tbody>
+                {{#list}}
+                    <tr>
+                        <td>Product Category</td>
+                        <td>{{productName}}</td>
+                        <td>{{productSize}}</td>
+                        <td>{{productPrice}}</td>
+                        <td>{{productColor}}</td>
+                        <td>{{productQuantity}}</td>
+                        <td><form><input type="text" size="2" />
+                        <a class="btn-floating btn-small waves-effect waves-light"><i class="material-icons">add</i><a>
+                        <a class="btn-floating btn-small waves-effect waves-light"><i class="material-icons">remove</i></a></form></td>
+                    </tr>
+                {{/list}}
+            </tbody>
+        </table>
     </div>
 </div>
 
