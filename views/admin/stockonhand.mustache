@@ -30,6 +30,7 @@
         <table>
             <thead>
                 <tr>
+                    <th>Remove</th>
                     <th>Category</th>
                     <th>Item</th>
                     <th>Size</th>
@@ -42,7 +43,8 @@
             <tbody>
                 {{#list}}
                     <tr>
-                        <td>Product Category</td>
+                        <td><a class="btn-floating btn-small waves-effect waves-light modal-trigger" href="#deleteModal"><i class="material-icons">delete_forever</i><a></td>
+                        <td>{{productcategories.productGender}} {{productcategories.productCategory}}</td>
                         <td>{{productName}}</td>
                         <td>{{productSize}}</td>
                         <td>{{productPrice}}</td>
@@ -57,6 +59,19 @@
         </table>
     </div>
 </div>
+
+
+<div id="deleteModal"class="modal">
+    <div class="modal-content">
+        <h4>Are you sure?</h4>
+        <p>This action will permanently delete this item from your inventory. Are you sure that you would like to continue?</p>
+    </div>
+    <div class="modal-footer">
+        <a href="#!" class="delete waves-effect waves-green btn-flat">Delete</a>
+        <a href="#!" class="modal-close waves-effect waves-green btn-flat">Cancel</a>
+    </div>
+</div>
+
 
 <footer class="page-footer cyan accent-4">
     <div class="container">
@@ -84,5 +99,6 @@
     </div>
 </footer>
 
+<script type="text/javascript" src="layout.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-rc.2/js/materialize.min.js"></script>
 </body>

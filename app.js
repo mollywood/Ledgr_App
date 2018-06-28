@@ -213,27 +213,24 @@ app.get('/admin/updatecategories', function(req,res){
 
 app.post('/admin/updatecategories', function(req,res){
 
-    let thisCategory = {
+    let newCategory = {
         productCategory : req.body.productCategory,
         productGender : req.body.productGender
     }
 
-    models.Products.create(newCategory).then(function(){
+    models.productcategories.create(newCategory).then(function(){
 
     res.redirect('admin/updatecategories')
     })
 })
 
-// models.productcategories.findOne().then(function(productcategories){
-//     console.log(productcategories)
-// })
-
-
 // Update Products
 app.get('/admin/updateproducts', function(req,res){
-    //models.products.findAll().then(function(products){
-        res.render('admin/updateproducts')
-    //})
+
+    models.productcategories.findAll().then(function(productcategories){
+        res.render('admin/updateproducts', {cats: productcategories})
+    
+    })
 })
 
 app.post('/admin/updateproducts', function(req,res){
@@ -245,24 +242,26 @@ app.post('/admin/updateproducts', function(req,res){
         productPrice : req.body.productPrice,
         productColor : req.body.productColor,
         productURL : req.body.productURL,
-        productQuantity: req.body.productQuantity
-
+        productQuantity: req.body.productQuantity,
+        productCategoryID: req.body.productCategoryID
     }
 
+    console.log(newProduct)
     models.Products.create(newProduct).then(function(){
     res.redirect('admin/updateproducts')
 })
 })
 
-// models.Products.findOne().then(function(Products){
-//     console.log(Products)
-// })
-
-
 // Stock On Hand
 app.get('/admin/stockonhand', function(req,res){
 
-    models.Products.findAll().then(function(products){
+    models.Products.findAll({
+        include: [{
+            model: models.productcategories,
+            as : 'productcategories'
+        }]
+    }).then(function(products){
+
         res.render('admin/stockonhand', {list: products})
     })
 })
@@ -291,11 +290,6 @@ app.post('/contactus', function(req,res){
     })
     res.redirect('/contactus')
 })
-
-// models.ContactUs.findOne().then(function(ContactUs){
-//     console.log(ContactUs)
-// })
-
 
 // Server
 app.listen(3000, () => console.log('I am listening on 3000!'))
