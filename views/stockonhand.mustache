@@ -1,0 +1,85 @@
+<head>
+    <title>Ledgr | Stock On Hand</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-rc.2/css/materialize.min.css">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="public/adminstyles.css">
+</head>
+<body>
+
+<nav>
+    <div class="nav-wrapper cyan accent-4">
+        <a href="/adminlanding" class="brand-logo">
+            <i class="large material-icons prefix">business</i>
+            Ledgr
+        </a>
+        <ul id="nav-mobile" class="right hide-on-med-and-down">
+            <li><a href="/updatecategories">Update Product Categories</a></li>
+            <li><a href="/updateproducts">Update Products</a></li>
+            <li class="active"><a href="/stockonhand">Stock On Hand</a></li>
+            <li><a href="/contactus">Contact Us</a></li>
+        </ul>
+    </div>
+</nav>
+
+<h1>Stock On Hand</h1>
+<div class="container">
+    <div class="row">
+        <table>
+            <thead>
+                <tr>
+                    <th>Category</th>
+                    <th>Item</th>
+                    <th>Size</th>
+                    <th>Price</th>
+                    <th>Color</th>
+                    <th>Quantity</th>
+                    <th>Restock</th>
+                </tr>
+            <thead>
+            <tbody>
+                {{#list}}
+                    <tr>
+                        <td>Product Category</td>
+                        <td>{{productName}}</td>
+                        <td>{{productSize}}</td>
+                        <td>{{productPrice}}</td>
+                        <td>{{productColor}}</td>
+                        <td>{{productQuantity}}</td>
+                        <td><form><input type="text" size="2" />
+                        <a class="btn-floating btn-small waves-effect waves-light"><i class="material-icons">add</i><a>
+                        <a class="btn-floating btn-small waves-effect waves-light"><i class="material-icons">remove</i></a></form></td>
+                    </tr>
+                {{/list}}
+            </tbody>
+        </table>
+    </div>
+</div>
+
+<footer class="page-footer cyan accent-4">
+    <div class="container">
+        <div class="row">
+            <div class="col l6 s12">
+                <h5 class="white-text">Lorem Footer</h5>
+                <p class="grey-text text-lighten-4">Lorem ipsum dolor amet affogato seitan magna, iPhone dolore post-ironic distillery skateboard typewriter pinterest meggings narwhal. Venmo enamel pin sint echo park pabst, migas brooklyn consequat activated charcoal jianbing twee occupy meditation tumblr hell of. Bitters viral migas austin fanny pack 90's health goth. Mixtape umami fugiat hell of.</p>
+            </div>
+            <div class="col l4 offset-l2 s12">
+                <h5 class="white-text">Links</h5>
+                <ul>
+                  <li><a class="grey-text text-lighten-3" href="#!">Link 1</a></li>
+                  <li><a class="grey-text text-lighten-3" href="#!">Link 2</a></li>
+                  <li><a class="grey-text text-lighten-3" href="#!">Link 3</a></li>
+                  <li><a class="grey-text text-lighten-3" href="#!">Link 4</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <div class="footer-copyright">
+        <div class="container">
+            © 2018 Copyright Dream Team
+
+        </div>
+    </div>
+</footer>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-rc.2/js/materialize.min.js"></script>
+</body>

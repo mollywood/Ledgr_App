@@ -1,0 +1,9 @@
+body {
+    background-color: black;
+}
+
+.card {
+    height: 36rem;
+    overflow: hidden;
+}
+

@@ -1,0 +1,78 @@
+<head>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-rc.2/css/materialize.min.css">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="public/adminstyles.css">
+</head>
+<body>
+
+<nav>
+    <div class="nav-wrapper cyan accent-4">
+        <a href="/adminlanding" class="brand-logo">
+            <i class="large material-icons prefix">business</i>
+            Ledgr
+        </a>
+        <ul id="nav-mobile" class="right hide-on-med-and-down">
+            <li><a href="/updatecategories">Update Product Categories</a></li>
+            <li><a href="/updateproducts">Update Products</a></li>
+            <li><a href="/stockonhand">Stock On Hand</a></li>
+            <li class="active"><a href="/contactus">Contact Us</a></li>
+        </ul>
+    </div>
+</nav>
+
+<h1>Contact Us!</h1>
+<div class="container">
+    <div class="row">
+        <p class="contact">We'd love to hear from you! We welcome your praise and encouragement, as well as your suggestions for improvement.</p>
+        <form action='/contactus' method='POST'>
+            <div class="input-field">
+                <i class="small material-icons prefix">account_circle</i>
+                <input id="contactName" type="text" name="contactName" />
+                <label for="contactName">Name</label>
+            </div>
+            <div class="input-field">
+                <i class="small material-icons prefix">email</i>
+                <input id="contactEmail" type="email" name="contactEmail" />
+                <label for="contactEmail">Email</label>
+            </div>
+            <div class="input-field">
+                <i class="small material-icons prefix">edit</i>
+                <textarea id="contactComment" type="text" name="contactComment" placeholder="Thanks for your input!">
+                </textarea>
+            </div>
+            <button class="btn-large waves-effect waves-light" type="submit" name="action">
+                Submit
+                <i class="material-icons right">send</i>
+            </button>
+        </form>
+    </div>
+</div>
+
+<footer class="page-footer cyan accent-4">
+    <div class="container">
+        <div class="row">
+            <div class="col l6 s12">
+                <h5 class="white-text">Lorem Footer</h5>
+                <p class="grey-text text-lighten-4">Lorem ipsum dolor amet affogato seitan magna, iPhone dolore post-ironic distillery skateboard typewriter pinterest meggings narwhal. Venmo enamel pin sint echo park pabst, migas brooklyn consequat activated charcoal jianbing twee occupy meditation tumblr hell of. Bitters viral migas austin fanny pack 90's health goth. Mixtape umami fugiat hell of.</p>
+            </div>
+            <div class="col l4 offset-l2 s12">
+                <h5 class="white-text">Links</h5>
+                <ul>
+                  <li><a class="grey-text text-lighten-3" href="#!">Link 1</a></li>
+                  <li><a class="grey-text text-lighten-3" href="#!">Link 2</a></li>
+                  <li><a class="grey-text text-lighten-3" href="#!">Link 3</a></li>
+                  <li><a class="grey-text text-lighten-3" href="#!">Link 4</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <div class="footer-copyright">
+        <div class="container">
+            © 2018 Copyright Dream Team
+
+        </div>
+    </div>
+</footer>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-rc.2/js/materialize.min.js"></script>
+</body>

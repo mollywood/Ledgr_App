@@ -1,0 +1,30 @@
+{
+  "name": "inventory",
+  "version": "1.0.0",
+  "description": "\"An app to track inventory for small retailers\"",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "\"inventory\"",
+    "\"cost",
+    "analysis\"",
+    "\"retail\""
+  ],
+  "author": "Gabriel Frontera, Shawn Benny, Molly Wood",
+  "license": "ISC",
+  "dependencies": {
+    "bcrpyt": "^2.0.0",
+    "bcrypt": "^2.0.1",
+    "body-parser": "^1.18.3",
+    "express": "^4.16.3",
+    "express-session": "^1.15.6",
+    "http-server": "^0.11.1",
+    "mustache": "^2.3.0",
+    "mustache-express": "^1.2.6",
+    "nodemon": "^1.17.5",
+    "pg": "^7.4.3",
+    "sequelize": "^4.38.0"
+  }
+}
