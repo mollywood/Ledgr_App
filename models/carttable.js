@@ -5,7 +5,11 @@ module.exports = (sequelize, DataTypes) => {
     ProductSize: DataTypes.STRING,
     ProductPrice: DataTypes.INTEGER,
     ProductColor: DataTypes.STRING,
-    Quantity: DataTypes.INTEGER
+    Quantity: DataTypes.INTEGER,
+    UserId: DataTypes.INTEGER,
+    ProductId: DataTypes.INTEGER,
+    totalAmt: DataTypes.INTEGER,
+    sessionID: DataTypes.INTEGER
   }, {});
   CartTable.associate = function(models) {
     // associations can be defined here

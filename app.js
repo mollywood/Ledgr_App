@@ -62,6 +62,7 @@ app.use(bodyParser.urlencoded({ extended : false }))
 //                 var hour = 1800000
 //                 req.session.cookie.expires = new Date(Date.now() + hour)
 //                 req.session.cookie.maxAge = hour
+//                 console.log(req.session.id)
 //                 }
 //             res.redirect('sessions/productpage')
 //             } else {
@@ -184,17 +185,38 @@ app.get('/sessions/productpage', function(req,res){
 
 // Cart
 
-app.get('sessions/cart', function(req, res) {
-    res.render('sessions/cart')
+function addValues(items) {
+  let i = 0
+  var total = 0
+  for(i = 0; i < items.length; i++) {
+    total += items[i].totalAmt
+  }
+  return total
+}
+
+app.get('/sessions/cart', function(req, res) {
+  models.CartTable.findAll({
+    where:{
+      sessionID : 'EeYAm4J5bPGZj547SDayLYahpLJ3ayD4'
+    }
+  }).then(function(items) {
+    res.render('sessions/cart', {shoppingCart : items, sum : addValues(items)})
   })
-  //
-  // app.post('/cart', function(req, res) {
-  //   models.CartTable.findAll({
-  //     where:{
-  //
-  //     }
-  //   })
-  // })
+})
+
+//DELETING ITEMS CART //
+
+app.post('/deleteItem', function(req,res) {
+  console.log(req.body.id)
+  models.CartTable.destroy({
+
+    where: {
+      id : req.body.delete
+    }
+    }).then(function(){
+      res.redirect('sessions/cart')
+  })
+})
 
 
 // INVENTORY MGMT SIDE
@@ -289,6 +311,28 @@ where: {
 res.redirect('admin/stockonhand')
 })
 }
+})
+
+// PUSH TO CART
+
+app.post('/addToCart', function(req,res) {
+
+  let cartItem = {
+    ProductName : req.body.name,
+    ProductSize : req.body.size,
+    ProductPrice : req.body.price,
+    ProductColor: req.body.color,
+    Quantity: req.body.quantityAmt,
+    ProductId : req.body.productID,
+    UserId : req.session.userID,
+    sessionID : req.session.id,
+    id : req.body.id,
+    totalAmt : (parseInt(req.body.quantityAmt) * parseInt(req.body.price))
+  }
+      console.log(cartItem)
+      models.CartTable.create(cartItem).then(function(){
+        res.redirect('sessions/productpage')
+  })
 })
 
 // Contact Us
