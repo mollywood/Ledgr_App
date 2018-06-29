@@ -2,20 +2,21 @@
 
 module.exports = {
   up: (queryInterface, Sequelize) => {
-    return queryInterface.addColumn(
-      'CartTable',
+     queryInterface.addColumn(
+      'CartTables',
       'UserId',
       {
         type: Sequelize.INTEGER,
         allowNull:false,
         references: {
-          model: 'User',
+          model: 'Users',
           key: 'id'
         }
       }
-    ).then(function() {
-      return queryInterface.addColumn(
-        'CartTable',
+    )
+
+       queryInterface.addColumn(
+        'CartTables',
         'ProductId',
         {
           type: Sequelize.INTEGER,
@@ -26,15 +27,15 @@ module.exports = {
           }
         }
       )
-    })
+
 
 
   },
 
   down: (queryInterface, Sequelize) => {
-    return queryInterface.removeColumn('CartTable', 'UserId').then(function() {
-      return queryInterface.removeColumn('CartTable', 'ProductId')
-    });
+    queryInterface.removeColumn('CartTables', 'UserId')
+    queryInterface.removeColumn('CartTables', 'ProductId')
+
 
   }
 };
