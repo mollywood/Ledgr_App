@@ -62,6 +62,7 @@ app.use(bodyParser.urlencoded({ extended : false }))
 //                 var hour = 1800000
 //                 req.session.cookie.expires = new Date(Date.now() + hour)
 //                 req.session.cookie.maxAge = hour
+//                 console.log(req.session.id)
 //                 }
 //             res.redirect('sessions/productpage')
 //             } else {
@@ -167,6 +168,98 @@ app.use(bodyParser.urlencoded({ extended : false }))
 //     res.redirect('/adminSignIn')
 // })
 
+
+// USER SIGN OUT //
+app.post('/logOut', function(req, res){
+    req.session.destroy()
+    res.clearCookie('connect.sid', {path : '/'});
+    res.redirect('/signIn')
+})
+
+// Render Sign In Error
+app.get('/errorSignIn', function(req,res) {
+    res.render('errorSignIn')
+})
+
+  // ADMIN //
+
+  //SIGN UP//
+
+app.get('/adminSignIn', function(req,res){
+    res.render('adminSignIn')
+})
+
+app.post('/adminSignUp', function(req, res){
+    bcrypt.hash(req.body.adminPassword, 10, function(err, hash) {
+        let newAdmin = {
+            username : req.body.adminUsername,
+            password : hash
+        }
+
+    models.Admin.create(newAdmin).then(function(){
+        res.redirect('/admin')
+        })
+    })
+})
+
+// SIGN IN //
+app.post('/adminSignIn',function(req,res,next){
+
+    models.Admin.findOne({username : req.body.adminUsernameSI}).then(function(admin) {
+        bcrypt.compare(req.body.adminPasswordSI, admin.password, function(err,result) {
+            if(result) {
+              if(req.session) {
+                req.session.adminId = admin.id
+                var hour = 1800000
+                req.session.cookie.expires = new Date(Date.now() + hour)
+                req.session.cookie.maxAge = hour
+                }
+                res.redirect('/admin/adminlanding')
+            } else {
+                res.redirect('/adminSignIn')
+            }
+        })
+    })
+})
+
+// Validate ADMIN Session //
+
+function validateAdminLogin(req,res,next) {
+  // console.log(req.session.adminId)
+
+  if(req.session.adminId) {
+    next()
+  } else {
+      res.redirect('/adminSignIn')
+  }
+}
+
+app.all('/admin/*',validateAdminLogin,function(req,res,next){
+  next()
+})
+
+// ADMIN LOG OUT //
+app.post('/adminLogOut', function(req, res){
+    req.session.destroy()
+    res.clearCookie('connect.sid', {path : '/'});
+    res.redirect('/adminSignIn')
+})
+
+//LOGIN
+app.get('/login', function(req,res) {
+  res.render('login')
+})
+
+// app.post('')
+
+
+
+//SIGN UP
+app.get('/signup', function(req,res) {
+  res.render('signup')
+})
+
+
 // PUBLIC FACING SIDE //
 
 // Index
@@ -184,17 +277,38 @@ app.get('/sessions/productpage', function(req,res){
 
 // Cart
 
-app.get('sessions/cart', function(req, res) {
-    res.render('sessions/cart')
+function addValues(items) {
+  let i = 0
+  var total = 0
+  for(i = 0; i < items.length; i++) {
+    total += items[i].totalAmt
+  }
+  return total
+}
+
+app.get('/sessions/cart', function(req, res) {
+  models.CartTable.findAll({
+    where:{
+      sessionID : 'EeYAm4J5bPGZj547SDayLYahpLJ3ayD4'
+    }
+  }).then(function(items) {
+    res.render('sessions/cart', {shoppingCart : items, sum : addValues(items)})
   })
-  //
-  // app.post('/cart', function(req, res) {
-  //   models.CartTable.findAll({
-  //     where:{
-  //
-  //     }
-  //   })
-  // })
+})
+
+//DELETING ITEMS CART //
+
+app.post('/deleteItem', function(req,res) {
+  console.log(req.body.id)
+  models.CartTable.destroy({
+
+    where: {
+      id : req.body.delete
+    }
+    }).then(function(){
+      res.redirect('sessions/cart')
+  })
+})
 
 
 // INVENTORY MGMT SIDE
@@ -291,6 +405,28 @@ res.redirect('admin/stockonhand')
 }
 })
 
+// PUSH TO CART
+
+app.post('/addToCart', function(req,res) {
+
+  let cartItem = {
+    ProductName : req.body.name,
+    ProductSize : req.body.size,
+    ProductPrice : req.body.price,
+    ProductColor: req.body.color,
+    Quantity: req.body.quantityAmt,
+    ProductId : req.body.productID,
+    UserId : req.session.userID,
+    sessionID : req.session.id,
+    id : req.body.id,
+    totalAmt : (parseInt(req.body.quantityAmt) * parseInt(req.body.price))
+  }
+      console.log(cartItem)
+      models.CartTable.create(cartItem).then(function(){
+        res.redirect('sessions/productpage')
+  })
+})
+
 // Contact Us
 app.get('/contactus', function(req,res){
     //models.products.findAll().then(function(products){
@@ -314,5 +450,9 @@ app.post('/contactus', function(req,res){
     res.redirect('/contactus')
 })
 
+//Thank You
+app.get('/ThankYou', function(req,res) {
+  res.render('ThankYou')
+})
 // Server
 app.listen(3000, () => console.log('I am listening on 3000!'))
