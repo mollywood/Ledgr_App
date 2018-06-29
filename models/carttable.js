@@ -9,6 +9,10 @@ module.exports = (sequelize, DataTypes) => {
   }, {});
   CartTable.associate = function(models) {
     // associations can be defined here
+    CartTable.belongsTo(models.User, {as:'User', foreignKey:'id'}),
+    CartTable.hasMany(models.Products, {as:'Products', foreignKey:'id'}),
+    CartTable.belongsTo(models.Sales, {as:'Sales', foreignKey:'id'})
+
   };
   return CartTable;
 };
