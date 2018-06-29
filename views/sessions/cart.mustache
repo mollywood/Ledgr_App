@@ -1,7 +1,7 @@
 <head>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-rc.2/css/materialize.min.css">
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-    <link rel="stylesheet" type="text/css" href="styles.css">
+    <link rel="stylesheet" type="text/css" href="cart.css">
 </head>
 <body>
   <body>
@@ -10,10 +10,11 @@
       <a href="#!" class="brand-logo">Style File</a>
       <a href="#" data-target="mobile-demo" class="sidenav-trigger"><i class="material-icons">menu</i></a>
       <ul class="right hide-on-med-and-down">
-        <li><a href="sass.html">Sign Up</a></li>
-        <li><a href="badges.html">Login</a></li>
-        <li><a href="collapsible.html">Admin</a></li>
-        <li><a href="mobile.html">Mobile</a></li>
+        <li><a href="./productpage">Back to Store</a></li>
+        <li><a href="./cart"><i class='material-icons'>shopping_cart</i></a></li>
+        <li><form action="/logOut" method="post">
+          <a><button>Logout</button></a>
+        </form></li>
       </ul>
     </div>
   </nav>
@@ -25,83 +26,44 @@
     <li><a href="mobile.html">Mobile</a></li>
   </ul>
 
-<div class="container">
+<div class="ledgrTable container">
   <h3>Shopping Cart</h3>
   <table>
  <thead>
    <tr>
        <th>Name</th>
        <th>Price</th>
-       <th>Item Total</th>
        <th>Quantity</th>
-       <th>          </th>
+       <th>Item Total</th>
+       <th>          </th> <img src-= <a href
    </tr>
  </thead>
-
- <tbody>
+   {{#shoppingCart}}
+   <tbody>
    <tr>
      <img src="" alt="">
-     <td>Alvin</td>
-     <td>$0.87</td>
-     <td>
-       <div class="row">
-        <div class="col s3">
-          <select class="browser-default">
-            <option value="" disabled selected>Qty</option>
-            <option value="1">1</option>
-            <option value="2">2</option>
-            <option value="3">3</option>
-          </select>
-       </div>
-      </div>
-    </td>
-    <td>$21.92</td>
-    <td><a class="waves-effect waves-light btn-small red accent-4">Delete</a>
-</td>
-   </tr>
-   <tr>
-     <img src="" alt="">
-     <td>Alan</td>
-     <td>$3.76</td>
-     <td>
-       <div class="row">
-        <div class="col s3">
-          <select class="browser-default">
-            <option value="" disabled selected>Qty</option>
-            <option value="1">1</option>
-            <option value="2">2</option>
-            <option value="3">3</option>
-          </select>
-       </div>
-      </div>
-    </td>
-    <td>$21.92</td>
-    <td><a class="waves-effect waves-light btn-small red accent-4">Delete</a>
-   </tr>
-   <tr>
-     <img src="" alt="">
-     <td>Jonathan</td>
-     <td>$7.00</td>
-     <td>
-       <div class="row">
-        <div class="col s3">
-          <select class="browser-default">
-            <option value="" disabled selected>Qty</option>
-            <option value="1">1</option>
-            <option value="2">2</option>
-            <option value="3">3</option>
-          </select>
-       </div>
-      </div>
-    </td>
-    <td>$21.92</td>
-    <td><a class="waves-effect waves-light btn-small red accent-4">Delete</a>
+     <td>{{ProductName}}</td>
+     <td>${{ProductPrice}}</td>
+    <td>{{Quantity}}</td>
+    <td>${{totalAmt}}</td>
+    <td><form action="/deleteItem" method="post">
+    <input type="hidden" name="delete" value='{{id}}'>
+    <button class="waves-effect waves-light btn-small red accent-4">Delete</button>
+</form></td>
+<!-- <td><form class="formDelete" action='/deleteItem' method='post'>
+  <input type="hidden" name="store" value={{store_id}}>
+  <input type="hidden" name="storeName" value={{name}}>
+  <input type="hidden" name="delete" value={{id}}>
+  <input type="submit" value="Delete">
+</form></td> -->
    </tr>
  </tbody>
+
+   {{/shoppingCart}}
 </table>
 
 <div class="right-align">
-  <h5>Subtotal $34.88</h5>
+  <h5>Subtotal: ${{sum}}</h5>
 
   <a class="waves-effect waves-light btn-large green accent-4">Proceed to checkout</a>
 
@@ -109,7 +71,7 @@
 </div>
 </div>
 
-<footer class="page-footer black">
+<!-- <footer class="page-footer black">
 <div class="container">
   <div class="row">
     <div class="col l6 s12">
@@ -133,7 +95,7 @@
   <a class="grey-text text-lighten-4 right" href="#!">More Links</a>
   </div>
 </div>
-</footer>
+</footer> -->
 
 
 

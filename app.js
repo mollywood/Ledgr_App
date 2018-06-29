@@ -29,65 +29,143 @@ app.use(bodyParser.urlencoded({ extended : false }))
 
 // Sign Up
 
-app.get('/signIn', function(req,res){
-      res.render('signin')
-    })
-
-app.post('/signUp', function(req, res){
-    bcrypt.hash(req.body.password, 10, function(err, hash) {
-        let newUser = {
-          first_name : req.body.first_name,
-          last_name : req.body.last_name,
-          email : req.body.email,
-          address : req.body.address,
-          username : req.body.username,
-          password : hash
-    }
-
-    models.User.create(newUser).then(function(){
-        res.redirect('/login')
-        })
-    })
-})
-
-// Sign In
-
-app.post('/signIn',function(req,res,next){
-
-    models.User.findOne( {where: {username : req.body.usernameSI}}).then(function(user) {
-        bcrypt.compare(req.body.passwordSI, user.password, function(err,result) {
-            if(result) {
-            if(req.session) {
-                req.session.userID = user.id
-                var hour = 1800000
-                req.session.cookie.expires = new Date(Date.now() + hour)
-                req.session.cookie.maxAge = hour
-                }
-            res.redirect('sessions/productpage')
-            } else {
-            res.redirect('/signIn')
-            }
-        })
-    })
-})
-
-// Validate USER Session
-function validateUserLogin(req,res,next) {
-
-  if(req.session.userID) {
-    next()
-  } else {
-      res.redirect('/signin')
-  }
-}
-
-app.all('/sessions/*',validateUserLogin,function(req,res,next){
-  next()
-})
-
-// Render Sign In Success
-// app.get('/shop', function(req,res) {
-//     res.render('shop')
+// app.get('/signIn', function(req,res){
+//       res.render('signin')
+//     })
+//
+// app.post('/signUp', function(req, res){
+//     bcrypt.hash(req.body.password, 10, function(err, hash) {
+//         let newUser = {
+//           first_name : req.body.first_name,
+//           last_name : req.body.last_name,
+//           email : req.body.email,
+//           address : req.body.address,
+//           username : req.body.username,
+//           password : hash
+//     }
+//
+//     models.User.create(newUser).then(function(){
+//         res.redirect('/signIn')
+//         })
+//     })
+// })
+//
+// // Sign In
+//
+// app.post('/signIn',function(req,res,next){
+//
+//     models.User.findOne( {where: {username : req.body.usernameSI}}).then(function(user) {
+//         bcrypt.compare(req.body.passwordSI, user.password, function(err,result) {
+//             if(result) {
+//             if(req.session) {
+//                 req.session.userID = user.id
+//                 var hour = 1800000
+//                 req.session.cookie.expires = new Date(Date.now() + hour)
+//                 req.session.cookie.maxAge = hour
+//                 console.log(req.session.id)
+//                 }
+//             res.redirect('sessions/productpage')
+//             } else {
+//             res.redirect('/signIn')
+//             }
+//         })
+//     })
+// })
+//
+// // Validate USER Session
+// function validateUserLogin(req,res,next) {
+//
+//   if(req.session.userID) {
+//     next()
+//   } else {
+//       res.redirect('/signin')
+//   }
+// }
+//
+// app.all('/sessions/*',validateUserLogin,function(req,res,next){
+//   next()
+// })
+//
+// // Render Sign In Success
+// // app.get('/shop', function(req,res) {
+// //     res.render('shop')
+// // })
+//
+//
+// // USER SIGN OUT //
+// app.post('/logOut', function(req, res){
+//     req.session.destroy()
+//     res.clearCookie('connect.sid', {path : '/'});
+//     res.redirect('/signIn')
+// })
+//
+// // Render Sign In Error
+// app.get('/errorSignIn', function(req,res) {
+//     res.render('errorSignIn')
+// })
+//
+//   // ADMIN //
+//
+//   //SIGN UP//
+//
+// app.get('/adminSignIn', function(req,res){
+//     res.render('adminSignIn')
+// })
+//
+// app.post('/adminSignUp', function(req, res){
+//     bcrypt.hash(req.body.adminPassword, 10, function(err, hash) {
+//         let newAdmin = {
+//             username : req.body.adminUsername,
+//             password : hash
+//         }
+//
+//     models.Admin.create(newAdmin).then(function(){
+//         res.redirect('/admin')
+//         })
+//     })
+// })
+//
+// // SIGN IN //
+// app.post('/adminSignIn',function(req,res,next){
+//
+//     models.Admin.findOne({username : req.body.adminUsernameSI}).then(function(admin) {
+//         bcrypt.compare(req.body.adminPasswordSI, admin.password, function(err,result) {
+//             if(result) {
+//               if(req.session) {
+//                 req.session.adminId = admin.id
+//                 var hour = 1800000
+//                 req.session.cookie.expires = new Date(Date.now() + hour)
+//                 req.session.cookie.maxAge = hour
+//                 }
+//                 res.redirect('/admin/adminlanding')
+//             } else {
+//                 res.redirect('/adminSignIn')
+//             }
+//         })
+//     })
+// })
+//
+// // Validate ADMIN Session //
+//
+// function validateAdminLogin(req,res,next) {
+//   // console.log(req.session.adminId)
+//
+//   if(req.session.adminId) {
+//     next()
+//   } else {
+//       res.redirect('/adminSignIn')
+//   }
+// }
+//
+// app.all('/admin/*',validateAdminLogin,function(req,res,next){
+//   next()
+// })
+//
+// // ADMIN LOG OUT //
+// app.post('/adminLogOut', function(req, res){
+//     req.session.destroy()
+//     res.clearCookie('connect.sid', {path : '/'});
+//     res.redirect('/adminSignIn')
 // })
 
 
@@ -199,17 +277,38 @@ app.get('/sessions/productpage', function(req,res){
 
 // Cart
 
-app.get('sessions/cart', function(req, res) {
-    res.render('sessions/cart')
+function addValues(items) {
+  let i = 0
+  var total = 0
+  for(i = 0; i < items.length; i++) {
+    total += items[i].totalAmt
+  }
+  return total
+}
+
+app.get('/sessions/cart', function(req, res) {
+  models.CartTable.findAll({
+    where:{
+      sessionID : 'EeYAm4J5bPGZj547SDayLYahpLJ3ayD4'
+    }
+  }).then(function(items) {
+    res.render('sessions/cart', {shoppingCart : items, sum : addValues(items)})
   })
-  //
-  // app.post('/cart', function(req, res) {
-  //   models.CartTable.findAll({
-  //     where:{
-  //
-  //     }
-  //   })
-  // })
+})
+
+//DELETING ITEMS CART //
+
+app.post('/deleteItem', function(req,res) {
+  console.log(req.body.id)
+  models.CartTable.destroy({
+
+    where: {
+      id : req.body.delete
+    }
+    }).then(function(){
+      res.redirect('sessions/cart')
+  })
+})
 
 
 // INVENTORY MGMT SIDE
@@ -304,6 +403,28 @@ where: {
 res.redirect('admin/stockonhand')
 })
 }
+})
+
+// PUSH TO CART
+
+app.post('/addToCart', function(req,res) {
+
+  let cartItem = {
+    ProductName : req.body.name,
+    ProductSize : req.body.size,
+    ProductPrice : req.body.price,
+    ProductColor: req.body.color,
+    Quantity: req.body.quantityAmt,
+    ProductId : req.body.productID,
+    UserId : req.session.userID,
+    sessionID : req.session.id,
+    id : req.body.id,
+    totalAmt : (parseInt(req.body.quantityAmt) * parseInt(req.body.price))
+  }
+      console.log(cartItem)
+      models.CartTable.create(cartItem).then(function(){
+        res.redirect('sessions/productpage')
+  })
 })
 
 // Contact Us
