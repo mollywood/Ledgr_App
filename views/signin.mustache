@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>Sign Up / Sign In</title>
+  </head>
+  <body>
+
+  <h2>Sign Up / Sign In</h2>
+  <h4>Sign Up</h4>
+  <form action='/signUp' method='post'>
+    <label for="first_name">First Name: </label>
+    <input class="textinput" type="text" name="first_name" placeholder="First Name...">
+
+    <label for="last_name">Last Name: </label>
+    <input class="textinput" type="text" name="last_name" placeholder="Last Name...">
+
+    <label for="email">Email: </label>
+    <input class="textinput" type="email" name="email" placeholder="your@email.com">
+
+    <label for="address">Address: </label>
+    <input class="textinput" type="text" name="address" placeholder="You address...">
+
+    <label for="username">Username: </label>
+    <input class="textinput" type="text" name="username" placeholder="Username...">
+
+    <label for="password">Password: </label>
+    <input class="textinput" type="text" name="password" placeholder="Password...">
+    <input class="submitBtn" type="submit" />
+  </form>
+  <hr>
+
+  <h4>Sign In</h4>
+  <form action="/signIn" method="post">
+    <label for="usernameSI">Username: </label>
+    <input class="textinput" type="text" name="usernameSI" placeholder="Username...">
+
+    <label for="passwordSI">Password: </label>
+    <input class="textinput" type="text" name="passwordSI" placeholder="Password...">
+    <input class="submitBtnSI" type="submit" />
+  </form>
+
+
+
+  </body>
+</html>

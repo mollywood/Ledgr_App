@@ -8,15 +8,18 @@
 
 <nav>
     <div class="nav-wrapper cyan accent-4">
-        <a href="/adminlanding" class="brand-logo">
+        <a href="./adminlanding" class="brand-logo">
             <i class="large material-icons prefix">business</i>
             Ledgr
         </a>
         <ul id="nav-mobile" class="right hide-on-med-and-down">
-            <li><a href="/updatecategories">Update Product Categories</a></li>
-            <li class="active"><a href="/updateproducts">Update Products</a></li>
-            <li><a href="/stockonhand">Stock On Hand</a></li>
+            <li><a href="./updatecategories">Update Product Categories</a></li>
+            <li class="active"><a href="./updateproducts">Update Products</a></li>
+            <li><a href="./stockonhand">Stock On Hand</a></li>
             <li><a href="/contactus">Contact Us</a></li>
+            <li><form action="/adminLogOut" method="post">
+              <a><button>Logout</button></a></li>
+            </form>
         </ul>
     </div>
 </nav>
@@ -27,11 +30,11 @@
         <form action='/updateproducts' method='POST'>
               <label for="productCategory">Product Category</label>
               <div class="input-field">
-                <select class="browser-default" name="productCategoryID">
+                <select id="productCategoryID" class="browser-default" name="productCategoryID">
                   <option value="" disabled selected>Choose your option</option>
-                  <option value="T-Shirt">T-Shirt</option>
-                  <option value="Jeans">Jeans</option>
-                  <option value="Accessories">Accessories</option>
+                  {{#cats}}
+                  <option name="productCategoryID" value={{id}}>{{productCategory}} | {{productGender}}</option>
+                  {{/cats}}
                 </select>
               </div>
             </div>
