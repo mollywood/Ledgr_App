@@ -44,11 +44,11 @@ app.get('/productpage', function(req,res){
 app.get('/cart', function(req, res) {
     res.render('cart')
   })
-  
+
   app.post('/cart', function(req, res) {
     models.CartTable.findAll({
       where:{
-        
+
       }
     })
   })
@@ -153,17 +153,23 @@ models.ContactUs.findOne().then(function(ContactUs){
     console.log(ContactUs)
 })
 
+//Thank You Page
+
+app.get(function(req,res) {
+  res.render('/ThankYou')
+})
+
 
 // AUTHENTICATION //
 
 // USER
 
-// Sign Up 
-  
+// Sign Up
+
 app.get('/signIn', function(req,res){
       res.render('signin')
     })
-  
+
 app.post('/signUp', function(req, res){
     bcrypt.hash(req.body.password, 10, function(err, hash) {
         let newUser = {
@@ -174,17 +180,17 @@ app.post('/signUp', function(req, res){
           username : req.body.username,
           password : hash
     }
-  
+
     models.User.create(newUser).then(function(){
         res.redirect('/signIn')
         })
     })
 })
-  
+
 // Sign In
-  
+
 app.post('/signIn',function(req,res,next){
-  
+
     models.User.findOne( {where: {username : req.body.usernameSI}}).then(function(user) {
         bcrypt.compare(req.body.passwordSI, user.password, function(err,result) {
             if(result) {
@@ -201,48 +207,48 @@ app.post('/signIn',function(req,res,next){
         })
     })
 })
-  
+
 // Render Sign In Success
 app.get('/shop', function(req,res) {
     res.render('shop')
 })
-  
+
 // Sign Out
 app.post('/logOut', function(req, res){
     req.session.destroy()
     res.clearCookie('connect.sid', {path : '/'});
     res.redirect('/signin')
 })
-  
+
 // Render Sign In Error
 app.get('/errorSignIn', function(req,res) {
     res.render('errorSignIn')
 })
-  
+
   // ADMIN //
-  
+
   //SIGN UP//
-  
+
 app.get('/admin', function(req,res){
     res.render('admin')
 })
-  
+
 app.post('/adminSignUp', function(req, res){
     bcrypt.hash(req.body.adminPassword, 10, function(err, hash) {
         let newAdmin = {
             username : req.body.adminUsername,
             password : hash
         }
-  
+
     models.Admin.create(newAdmin).then(function(){
         res.redirect('/admin')
         })
     })
 })
-  
+
 // Sign in
 app.post('/adminSignIn',function(req,res,next){
-  
+
     models.Admin.findOne({username : req.body.adminUsernameSI}).then(function(user) {
         bcrypt.compare(req.body.adminPasswordSI, user.password, function(err,result) {
             if(result) {
