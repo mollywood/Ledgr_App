@@ -23,7 +23,7 @@ app.use(express.static('public'))
 
 app.use(bodyParser.urlencoded({ extended : false }))
 
-// AUTHENTICATION //
+/* // AUTHENTICATION //
 
 // USER
 
@@ -243,7 +243,7 @@ app.post('/adminLogOut', function(req, res){
     req.session.destroy()
     res.clearCookie('connect.sid', {path : '/'});
     res.redirect('/adminSignIn')
-})
+}) */
 
 //LOGIN
 app.get('/login', function(req,res) {
@@ -274,6 +274,16 @@ app.get('/sessions/productpage', function(req,res){
         res.render('sessions/productpage', {list: products})
     })
 })
+
+// app.get('/sessions/productpage', function(req,res){
+//     let thisCat = req.body.selectedCat
+
+//     models.Products.findAll({
+//         where: { productCategoryID : thisCat}
+//     }).then((result) => {
+//         res.render('product', {list: products})
+//     })
+// })
 
 // Cart
 
@@ -334,7 +344,7 @@ app.post('/admin/updatecategories', function(req,res){
 
     models.productcategories.create(newCategory).then(function(){
 
-    res.redirect('admin/updatecategories')
+    res.redirect('./updatecategories')
     })
 })
 
@@ -362,9 +372,10 @@ app.post('/admin/updateproducts', function(req,res){
 
     console.log(newProduct)
     models.Products.create(newProduct).then(function(){
-    res.redirect('admin/updateproducts')
+    res.redirect('./updateproducts')
 })
 })
+
 
 // Stock On Hand
 app.get('/admin/stockonhand', function(req,res){
@@ -378,6 +389,18 @@ app.get('/admin/stockonhand', function(req,res){
 
         res.render('admin/stockonhand', {list: products})
     })
+})
+
+app.post('/deleteproduct',function(req,res){
+    let productID = req.body.id
+    
+    models.Products.find({
+        where: { id: productID}
+    }).then((result) => {
+        return models.Products.destroy({ where: {id: productID}})
+            .then((u) => { res.redirect('admin/stockonhand') });
+    });
+  
 })
 
 //Modify Stock On Hand

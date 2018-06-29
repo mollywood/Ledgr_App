@@ -2,7 +2,7 @@
     <title>Ledgr | Update Products</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-rc.2/css/materialize.min.css">
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-    <link rel="stylesheet" type="text/css" href="public/adminstyles.css">
+    <link rel="stylesheet" type="text/css" href="../../adminstyles.css">
 </head>
 <body>
 
@@ -27,10 +27,11 @@
 <div class="container">
   <h1>Update Your Products</h1>
     <div class="row">
-        <form action='/updateproducts' method='POST'>
+        <form action='./updateproducts' method='POST'>
               <label for="productCategory">Product Category</label>
               <div class="input-field">
-                <select id="productCategoryID" class="browser-default" name="productCategoryID">
+                <i class="small material-icons prefix">wc</i>
+                <select id="productCategoryID" name="productCategoryID">
                   <option value="" disabled selected>Choose your option</option>
                   {{#cats}}
                   <option name="productCategoryID" value={{id}}>{{productCategory}} | {{productGender}}</option>
@@ -102,5 +103,7 @@
     </div>
 </footer>
 
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-rc.2/js/materialize.min.js"></script>
+<script src="../../layout.js"></script>
 </body>
