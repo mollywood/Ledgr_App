@@ -1,7 +1,7 @@
 <head>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-rc.2/css/materialize.min.css">
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-    <link rel="stylesheet" type="text/css" href="public/adminstyles.css">
+    <link rel="stylesheet" type="text/css" href="../../adminstyles.css">
 </head>
 <body>
 
@@ -26,7 +26,7 @@
 <div class="container">
   <h1>Update Your Categories</h1>
     <div class="row">
-        <form action="/updatecategories" method='POST'>
+        <form action="./updatecategories" method='POST'>
             <div class="input-field">
                 <i class="small material-icons prefix">wc</i>
                 <input id="productCategory" type="text" name="productCategory" />
@@ -34,12 +34,13 @@
             </div>
             <div class="input-field">
                 <div class="input-field">
-                      <select class="browser-default" name="productGender">
+                    <i class="small material-icons prefix">wc</i>
+                    <select name="productGender">
                         <option value="" disabled selected>Product Gender</option>
                         <option value="Men's">Men's</option>
                         <option value="Women's">Women's</option>
                         <option value="Children's">Children's</option>
-                      </select>
+                    </select>
             </div>
             <button class="btn-large waves-effect waves-light" type="submit" name="action">Submit
                 <i class="material-icons right">send</i>
@@ -75,6 +76,7 @@
     </div>
 </footer>
 
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-rc.2/js/materialize.min.js"></script>
-<script src="layout.js"></script>
+<script src="../../layout.js"></script>
 </body>
