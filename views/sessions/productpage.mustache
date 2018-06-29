@@ -2,7 +2,7 @@
     <link rel="stylesheet" type="text/css" href="storestyles.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-rc.2/css/materialize.min.css">
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-
+    
 </head>
 <body>
 
@@ -21,9 +21,9 @@
 <div class="container">
 <div class="row">
   {{#list}}
-
+  
     <div class="col s12 m4 l3">
-
+    
       <div class="card">
         <div class="card-image">
           <img src="{{productURL}}">
@@ -31,10 +31,10 @@
           <a onclick="M.toast({html: 'Added to cart!'})" class="btn-floating halfway-fab waves-effect waves-light red"><i class="material-icons">add_shopping_cart</i></a>
         </div>
         <div class="card-content" height="30px">
-          <p>Price: ${{productPrice}}  |  Color: {{productColor}}  |  Product Size: {{productSize}}</p>
+          <p>Price: ${{productPrice}}  |  Color: {{productColor}}  |  Size: {{productSize}}</p>
         </div>
       </div>
-
+      
     </div>
     {{/list}}
   </div>
