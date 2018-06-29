@@ -50,9 +50,13 @@
                         <td>{{productPrice}}</td>
                         <td>{{productColor}}</td>
                         <td>{{productQuantity}}</td>
-                        <td><form><input type="text" size="2" />
-                        <a class="btn-floating btn-small waves-effect waves-light"><i class="material-icons">add</i><a>
-                        <a class="btn-floating btn-small waves-effect waves-light"><i class="material-icons">remove</i></a></form></td>
+                        <td>
+                        <form action="/modify" method="post">
+                        <input type="hidden" name="quantity" value="{{productQuantity}}">
+                        <input type="hidden" name="productID" value="{{id}}">
+                        <input type="number" name="amtChange" size="2" />
+                        <button type="submit" name="action" value="add" class="btn-floating btn-small waves-effect waves-light"><i class="material-icons">add</i></button>
+                        <button type="submit" name="action" value="remove" class="btn-floating btn-small waves-effect waves-light"><i class="material-icons">remove</i></button></form></td>
                     </tr>
                 {{/list}}
             </tbody>
