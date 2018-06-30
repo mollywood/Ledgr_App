@@ -299,7 +299,6 @@ app.get('/sessions/cart', function(req, res) {
 //DELETING ITEMS CART //
 
 app.post('/deleteItem', function(req,res) {
-  console.log(req.body.id)
   models.CartTable.destroy({
 
     where: {
@@ -418,7 +417,7 @@ app.post('/addToCart', function(req,res) {
     ProductId : req.body.productID,
     UserId : req.session.userID,
     sessionID : req.session.id,
-    id : req.body.id,
+    checkOutid : req.body.id,
     totalAmt : (parseInt(req.body.quantityAmt) * parseInt(req.body.price))
   }
       console.log(cartItem)
@@ -451,8 +450,37 @@ app.post('/contactus', function(req,res){
 })
 
 //Thank You
-app.get('/ThankYou', function(req,res) {
-  res.render('ThankYou')
+app.post('/checkoutCart', function(req,res) {
+
+  let checkoutItem = {
+    UserId : req.session.userID,
+    ProductId : req.body.productID,
+    Price : req.body.price,
+    Quantity: req.body.quantityAmt,
+    checkOutid : req.body.id,
+    totalAmt : (parseInt(req.body.quantityAmt) * parseInt(req.body.price))
+
+  }
+      models.Sales.create(checkoutItem).then(function(){
+        models.CartTable.destroy({
+
+          where: {
+            id : req.body.checkout
+          }
+          }).then(function(){
+            res.render('sessions/ThankYou')
+        })
+  })
 })
+
+app.get('/sessions/ThankYou', function(req,res) {
+  res.render('sessions/ThankYou')
+})
+
+
+
+// app.get('/checkoutCart', function(req,res) {
+//   res.render('ThankYou')
+// })
 // Server
 app.listen(3000, () => console.log('I am listening on 3000!'))
