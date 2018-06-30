@@ -7,9 +7,11 @@
 
 <nav>
     <div class="nav-wrapper cyan accent-4">
-        <a href="admin/adminlanding" class="brand-logo">
-            <i class="large material-icons prefix">business</i>
-            Ledgr
+        <a href="./adminlanding" class="brand-logo">
+            <img src="../../LEDGR-02.png" class="logo">
+        </a>
+        <a href="#" data-target="mobile-demo" class="sidenav-trigger">
+            <i class="material-icons">menu</i>
         </a>
         <ul id="nav-mobile" class="right hide-on-med-and-down">
             <li><a href="admin/updatecategories">Update Product Categories</a></li>
@@ -19,6 +21,17 @@
         </ul>
     </div>
 </nav>
+
+<ul class="sidenav" id="mobile-demo">
+    <li><a href="/admin/updatecategories">Update Product Categories</a></li>
+    <li><a href="/admin/updateproducts">Update Products</a></li>
+    <li><a href="/admin/stockonhand">Stock On Hand</a></li>
+    <li><a href="/contactus">Contact Us</a></li>
+    <li><form action="/adminLogOut" method="post">
+            <a><button>Logout</button></a>
+        </form>
+    </li>
+</ul>
 
 <h1>Contact Us!</h1>
 <div class="container">
@@ -74,6 +87,7 @@
     </div>
 </footer>
 
-<script type="text/javascript" src="../layout.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-rc.2/js/materialize.min.js"></script>
+<script src="../../layout.js"></script>
 </body>

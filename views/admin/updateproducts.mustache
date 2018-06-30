@@ -1,6 +1,8 @@
 <head>
     <title>Ledgr | Update Products</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-rc.2/css/materialize.min.css">
+    <meta name = "viewport" content = "width=device-width, initial-scale=1.0">
+    <link rel="icon" href="">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-rc.2/css/materialize.css">
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <link rel="stylesheet" type="text/css" href="../../adminstyles.css">
 </head>
@@ -9,8 +11,10 @@
 <nav>
     <div class="nav-wrapper cyan accent-4">
         <a href="./adminlanding" class="brand-logo">
-            <i class="large material-icons prefix">business</i>
-            Ledgr
+            <img src="../../LEDGR-02.png" class="logo">
+        </a>
+        <a href="#" data-target="mobile-demo" class="sidenav-trigger">
+            <i class="material-icons">menu</i>
         </a>
         <ul id="nav-mobile" class="right hide-on-med-and-down">
             <li><a href="./updatecategories">Update Product Categories</a></li>
@@ -23,6 +27,17 @@
         </ul>
     </div>
 </nav>
+
+<ul class="sidenav" id="mobile-demo">
+    <li><a href="/admin/updatecategories">Update Product Categories</a></li>
+    <li><a href="/admin/updateproducts">Update Products</a></li>
+    <li><a href="/admin/stockonhand">Stock On Hand</a></li>
+    <li><a href="/contactus">Contact Us</a></li>
+    <li><form action="/adminLogOut" method="post">
+            <a><button>Logout</button></a>
+        </form>
+    </li>
+</ul>
 
 <div class="container">
   <h1>Update Your Products</h1>
