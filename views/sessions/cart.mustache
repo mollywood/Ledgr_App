@@ -65,8 +65,10 @@
 <div class="right-align">
   <h5>Subtotal: ${{sum}}</h5>
 
-  <a class="waves-effect waves-light btn-large green accent-4">Proceed to checkout</a>
-
+  <form action="/checkoutCart" method="post">
+    <input type="hidden" name="checkout" value="{{checkOutid}}">
+    <button class="waves-effect waves-light btn-large green accent-4">Proceed to checkout</button>
+  </form>
 
 </div>
 </div>
