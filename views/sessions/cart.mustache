@@ -66,7 +66,8 @@
   <h5>Subtotal: ${{sum}}</h5>
 
   <form action="/checkoutCart" method="post">
-    <input type="hidden" name="checkout" value="{{checkOutid}}">
+    <input type="hidden" name="productid" value={{id}}>
+    <input type="hidden" name="sum" value={{sum}}>
     <button class="waves-effect waves-light btn-large green accent-4">Proceed to checkout</button>
   </form>
 

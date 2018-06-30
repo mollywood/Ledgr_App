@@ -23,149 +23,71 @@ app.use(express.static('public'))
 
 app.use(bodyParser.urlencoded({ extended : false }))
 
-/* // AUTHENTICATION //
+// AUTHENTICATION //
 
 // USER
 
 // Sign Up
 
-// app.get('/signIn', function(req,res){
-//       res.render('signin')
-//     })
-//
-// app.post('/signUp', function(req, res){
-//     bcrypt.hash(req.body.password, 10, function(err, hash) {
-//         let newUser = {
-//           first_name : req.body.first_name,
-//           last_name : req.body.last_name,
-//           email : req.body.email,
-//           address : req.body.address,
-//           username : req.body.username,
-//           password : hash
-//     }
-//
-//     models.User.create(newUser).then(function(){
-//         res.redirect('/signIn')
-//         })
-//     })
-// })
-//
-// // Sign In
-//
-// app.post('/signIn',function(req,res,next){
-//
-//     models.User.findOne( {where: {username : req.body.usernameSI}}).then(function(user) {
-//         bcrypt.compare(req.body.passwordSI, user.password, function(err,result) {
-//             if(result) {
-//             if(req.session) {
-//                 req.session.userID = user.id
-//                 var hour = 1800000
-//                 req.session.cookie.expires = new Date(Date.now() + hour)
-//                 req.session.cookie.maxAge = hour
-//                 console.log(req.session.id)
-//                 }
-//             res.redirect('sessions/productpage')
-//             } else {
-//             res.redirect('/signIn')
-//             }
-//         })
-//     })
-// })
-//
-// // Validate USER Session
-// function validateUserLogin(req,res,next) {
-//
-//   if(req.session.userID) {
-//     next()
-//   } else {
-//       res.redirect('/signin')
-//   }
-// }
-//
-// app.all('/sessions/*',validateUserLogin,function(req,res,next){
-//   next()
-// })
-//
-// // Render Sign In Success
-// // app.get('/shop', function(req,res) {
-// //     res.render('shop')
-// // })
-//
-//
-// // USER SIGN OUT //
-// app.post('/logOut', function(req, res){
-//     req.session.destroy()
-//     res.clearCookie('connect.sid', {path : '/'});
-//     res.redirect('/signIn')
-// })
-//
-// // Render Sign In Error
-// app.get('/errorSignIn', function(req,res) {
-//     res.render('errorSignIn')
-// })
-//
-//   // ADMIN //
-//
-//   //SIGN UP//
-//
-// app.get('/adminSignIn', function(req,res){
-//     res.render('adminSignIn')
-// })
-//
-// app.post('/adminSignUp', function(req, res){
-//     bcrypt.hash(req.body.adminPassword, 10, function(err, hash) {
-//         let newAdmin = {
-//             username : req.body.adminUsername,
-//             password : hash
-//         }
-//
-//     models.Admin.create(newAdmin).then(function(){
-//         res.redirect('/admin')
-//         })
-//     })
-// })
-//
-// // SIGN IN //
-// app.post('/adminSignIn',function(req,res,next){
-//
-//     models.Admin.findOne({username : req.body.adminUsernameSI}).then(function(admin) {
-//         bcrypt.compare(req.body.adminPasswordSI, admin.password, function(err,result) {
-//             if(result) {
-//               if(req.session) {
-//                 req.session.adminId = admin.id
-//                 var hour = 1800000
-//                 req.session.cookie.expires = new Date(Date.now() + hour)
-//                 req.session.cookie.maxAge = hour
-//                 }
-//                 res.redirect('/admin/adminlanding')
-//             } else {
-//                 res.redirect('/adminSignIn')
-//             }
-//         })
-//     })
-// })
-//
-// // Validate ADMIN Session //
-//
-// function validateAdminLogin(req,res,next) {
-//   // console.log(req.session.adminId)
-//
-//   if(req.session.adminId) {
-//     next()
-//   } else {
-//       res.redirect('/adminSignIn')
-//   }
-// }
-//
-// app.all('/admin/*',validateAdminLogin,function(req,res,next){
-//   next()
-// })
-//
-// // ADMIN LOG OUT //
-// app.post('/adminLogOut', function(req, res){
-//     req.session.destroy()
-//     res.clearCookie('connect.sid', {path : '/'});
-//     res.redirect('/adminSignIn')
+app.get('/signIn', function(req,res){
+      res.render('signin')
+    })
+
+app.post('/signUp', function(req, res){
+    bcrypt.hash(req.body.password, 10, function(err, hash) {
+        let newUser = {
+          first_name : req.body.first_name,
+          last_name : req.body.last_name,
+          email : req.body.email,
+          address : req.body.address,
+          username : req.body.username,
+          password : hash
+    }
+
+    models.User.create(newUser).then(function(){
+        res.redirect('/signIn')
+        })
+    })
+})
+
+// Sign In
+
+app.post('/signIn',function(req,res,next){
+
+    models.User.findOne( {where: {username : req.body.usernameSI}}).then(function(user) {
+        bcrypt.compare(req.body.passwordSI, user.password, function(err,result) {
+            if(result) {
+            if(req.session) {
+                req.session.userID = user.id
+                var hour = 1800000
+                req.session.cookie.expires = new Date(Date.now() + hour)
+                req.session.cookie.maxAge = hour
+                }
+            res.redirect('sessions/productpage')
+            } else {
+            res.redirect('/login')
+            }
+        })
+    })
+})
+
+// Validate USER Session
+function validateUserLogin(req,res,next) {
+
+  if(req.session.userID) {
+    next()
+  } else {
+      res.redirect('/login')
+  }
+}
+
+app.all('/sessions/*',validateUserLogin,function(req,res,next){
+  next()
+})
+
+// Render Sign In Success
+// app.get('/shop', function(req,res) {
+//     res.render('shop')
 // })
 
 
@@ -173,7 +95,7 @@ app.use(bodyParser.urlencoded({ extended : false }))
 app.post('/logOut', function(req, res){
     req.session.destroy()
     res.clearCookie('connect.sid', {path : '/'});
-    res.redirect('/signIn')
+    res.redirect('/index')
 })
 
 // Render Sign In Error
@@ -243,14 +165,12 @@ app.post('/adminLogOut', function(req, res){
     req.session.destroy()
     res.clearCookie('connect.sid', {path : '/'});
     res.redirect('/adminSignIn')
-}) */
+})
 
 //LOGIN
 app.get('/login', function(req,res) {
   res.render('login')
 })
-
-// app.post('')
 
 
 
@@ -299,7 +219,7 @@ function addValues(items) {
 app.get('/sessions/cart', function(req, res) {
   models.CartTable.findAll({
     where:{
-      sessionID : 'EeYAm4J5bPGZj547SDayLYahpLJ3ayD4'
+      UserId : req.session.userID
     }
   }).then(function(items) {
     res.render('sessions/cart', {shoppingCart : items, sum : addValues(items)})
@@ -307,6 +227,7 @@ app.get('/sessions/cart', function(req, res) {
 })
 
 //DELETING ITEMS CART //
+
 
 app.post('/deleteItem', function(req,res) {
   models.CartTable.destroy({
@@ -392,14 +313,14 @@ app.get('/admin/stockonhand', function(req,res){
 
 app.post('/deleteproduct',function(req,res){
     let productID = req.body.id
-    
+
     models.Products.find({
         where: { id: productID}
     }).then((result) => {
         return models.Products.destroy({ where: {id: productID}})
             .then((u) => { res.redirect('admin/stockonhand') });
     });
-  
+
 })
 
 //Modify Stock On Hand
@@ -473,32 +394,45 @@ app.post('/contactus', function(req,res){
 })
 
 //Thank You
+
 app.post('/checkoutCart', function(req,res) {
 
-  let checkoutItem = {
+  let cartItem = {
+    productid : req.body.productid,
+    Total : req.body.sum,
     UserId : req.session.userID,
-    ProductId : req.body.productID,
-    Price : req.body.price,
-    Quantity: req.body.quantityAmt,
-    checkOutid : req.body.id,
-    totalAmt : (parseInt(req.body.quantityAmt) * parseInt(req.body.price))
-
+    sessionID : req.session.id,
+    orderReference : guid()
   }
-      models.Sales.create(checkoutItem).then(function(){
-        models.CartTable.destroy({
-
-          where: {
-            id : req.body.checkout
-          }
-          }).then(function(){
-            res.render('sessions/ThankYou')
-        })
+    models.Sales.create(cartItem).then(function(){
+      models.CartTable.destroy({
+        where: {
+          UserId: req.session.userID
+        }
+      })
+      }).then(function() {
+        res.redirect('sessions/ThankYou')
   })
 })
 
+function guid() {
+  function s4() {
+    return Math.floor((1 + Math.random()) * 0x10000)
+      .toString(16)
+      .substring(1);
+  }
+  return s4() + s4() + '-' + s4() + '-' + s4() + '-' + s4() + '-' + s4() + s4() + s4();
+}
+
 app.get('/sessions/ThankYou', function(req,res) {
-  res.render('sessions/ThankYou')
-})
+  models.Sales.findAll({
+    where:{
+      sessionID : req.session.id
+    }
+  }).then(function(orderReference){
+      res.render('sessions/productpage', {orderReference: orderReference})
+  })
+  })
 
 
 
