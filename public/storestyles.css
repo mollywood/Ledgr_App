@@ -2,8 +2,10 @@ body {
     background-color: black;
 }
 
-.card {
-    height: 36rem;
-    overflow: hidden;
+.background img {
+    width: 100%;
 }
 
+.parallax-container {
+    height: 520px;
+  }

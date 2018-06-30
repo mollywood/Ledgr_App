@@ -1,14 +1,18 @@
+<!DOCTYPE html>
+<html>
 <head>
-    <link rel="stylesheet" type="text/css" href="../../storestyles.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-rc.2/css/materialize.min.css">
-    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-
+  <link rel="stylesheet" type="text/css" href="../../storestyles.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-rc.2/css/materialize.min.css">
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
 </head>
 <body>
 
-<nav>
+<!-- Navbar -->
+  <nav>
     <div class="nav-wrapper">
-      <a href="#" class="brand-logo">Logo</a>
+      <a href="#" class="brand-logo">Stylephile</a>
+      <a href="#" data-target="mobile-demo" class="sidenav-trigger"><i class="material-icons">menu</i></a>
       <ul id="nav-mobile" class="right hide-on-med-and-down">
         <li><a href="./index">Back to home</a></li>
         <li><a href="./cart"><i class='material-icons'>shopping_cart</i></a></li>
@@ -19,29 +23,48 @@
     </div>
   </nav>
 
+<!-- Hamburger -->
+  <ul class="sidenav" id="mobile-demo">
+    <li>
+      <div class="background">
+        <img src="https://i.imgur.com/Hh7vjNX.jpg">
+      </div>
+    </li>
+    <li><a href="/index">Home</a></li>
+    <li><a href="/signup">Sign Up</a></li>
+    <li><a href="/login">Sign In</a></li>
+    <li><a href="/sessions/productpage">Shop</a></li>
+  </ul>
+
+
+<!-- girl on floor tee parallax -->
+  <div class="parallax-container" width="100%">
+    <div class="parallax"><img src="https://i.imgur.com/zEu81YF.jpg"></div>
+  </div>
+
 
 <div class="container">
-<div class="row">
+
+<div class="grid" data-masonry='{ "columnWidth": 200, "itemSelector": ".grid-item" }'>
   {{#list}}
 
-    <div class="col s12 m4 l3">
-
+    
+    <div class="grid-item">
       <div class="card">
         <div class="card-image">
           <img src="{{productURL}}">
           <span class="card-title">{{productName}}</span>
-
           <form action="/addToCart" method="post">
-          <input type="hidden" name="productID" value="{{id}}">
-          <input type="hidden" name="name" value="{{productName}}">
-          <input type="hidden" name="price" value="{{productPrice}}">
-          <input type="hidden" name="size" value="{{productSize}}">
-          <input type="hidden" name="color" value="{{productColor}}">
-          <button onclick="M.toast({html: 'Added to cart!'})" class="btn-floating halfway-fab waves-effect waves-light red"><i class="material-icons">add_shopping_cart</i></button>
+          <input type="hidden" name="productID" value="{{id}}" />
+          <input type="hidden" name="name" value="{{productName}}" />
+          <input type="hidden" name="price" value="{{productPrice}}" />
+          <input type="hidden" name="size" value="{{productSize}}" />
+          <input type="hidden" name="color" value="{{productColor}}" />
+          <a onclick="M.toast({html: 'Added to cart!'})" class="btn-floating halfway-fab waves-effect waves-light red"><i class="material-icons">add_shopping_cart</i></a>
         </div>
         <div class="card-content" height="30px">
-          <p>Price: ${{productPrice}}  |  Color: {{productColor}}  |  Size: {{productSize}}</p>
-            <select class="browser-default" name="quantityAmt">
+          <p>Price: ${{productPrice}}  |  Color: {{productColor}}  |  Product Size: {{productSize}}</p>
+        <select class="browser-default" name="quantityAmt">
               <option value="0" disabled selected>Qty</option>
               <option value="1">1</option>
               <option value="2">2</option>
@@ -53,14 +76,38 @@
             </select>
         </div>
         </form>
-      </div>
-
+    </div>
     </div>
     {{/list}}
   </div>
 </div>
 
-
+<footer class="page-footer black">
+    <div class="container">
+      <div class="row">
+        <div class="col l6 s12">
+          <h5 class="white-text">Stylephile</h5>
+          <p class="grey-text text-lighten-4">We're your hookup for all of your sartorial needs. We obsessively curate the best and the boldest fashions from around the globe, and bring it straight to you. No matter where you're going, we'll make sure that you arrive there in style.</p>
+        </div>
+        <div class="col l4 offset-l2 s12">
+          <h5 class="white-text">Links</h5>
+          <ul>
+            <li><a class="grey-text text-lighten-3" href="/index">Home</a></li>
+            <li><a class="grey-text text-lighten-3" href="/sessions/productpage">Shop</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <div class="footer-copyright">
+      <div class="container">
+      © 2018 Dream Team
+      <a class="grey-text text-lighten-4 right" href="/adminSignIn">Admin</a>
+      </div>
+    </div>
+  </footer>
 
 </body>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-rc.2/js/materialize.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-rc.2/js/materialize.min.js"></script>
+    <script src="https://unpkg.com/masonry-layout@4/dist/masonry.pkgd.js"></script>
+    <script src="../../layout.js"></script>
