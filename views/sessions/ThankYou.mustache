@@ -1,7 +1,7 @@
 <head>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-rc.2/css/materialize.min.css">
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-    <link rel="stylesheet" type="text/css" href="public/adminstyles.css">
+    <link rel="stylesheet" type="text/css" href="../adminstyles.css">
 </head>
 <body>
   <nav>
@@ -21,18 +21,15 @@
   <h1>Thank You!</h1>
 
   <h2>Order Confirmation</h2>
-  <h5>Order #324-2343-53343244-332</h5>
+  <h5>Order #{{orderReference}}</h5>
 
   <div class="container">
     <div class="col s12 m7">
     <h2 class="header">Your Order Contents</h2>
     <div class="card horizontal">
-      <div class="card-image">
-        <img src="https://lorempixel.com/100/190/nature/6">
-      </div>
       <div class="card-stacked">
         <div class="card-content">
-          <p>I am a very simple card. I am good at containing small bits of information.</p>
+          <p>Order #{{orderReference}}</p>
         </div>
         <div class="card-action">
           <a href="#">This is a link</a>
