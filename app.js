@@ -366,6 +366,12 @@ app.post('/addToCart', function(req,res) {
   }
       console.log(cartItem)
       models.CartTable.create(cartItem).then(function(){
+
+
+
+
+
+
         res.redirect('sessions/productpage')
   })
 })
