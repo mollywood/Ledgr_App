@@ -139,3 +139,17 @@ a {
   margin-left: 1%;
   margin-bottom: 1%;
 }
+
+.btn-flat {
+  background-color: #EC6268;
+}
+
+span {
+  font-family: 'Permanent Marker', cursive;
+}
+
+.body-picture {
+  background-image: url(https://i.imgur.com/wTfFhwA.jpg);
+  max-width: 100%;
+}
+

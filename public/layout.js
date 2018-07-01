@@ -51,3 +51,9 @@ $masonry.imagesLoaded(function() {
 $(document).ready(function(){
   $('.materialboxed').materialbox();
 });
+
+
+// FAB
+$(document).ready(function(){
+  $('.fixed-action-btn').floatingActionButton();
+});
