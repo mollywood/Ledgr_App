@@ -2,10 +2,140 @@ body {
     background-color: black;
 }
 
+.contact {
+  background-color: white;
+}
+
+ul.dropdown-content.select-dropdown li span {
+  color: #ff5252; /* no need for !important :) */
+}
+
 .background img {
     width: 100%;
 }
 
+.real-body {
+  background-color: white;
+}
+
 .parallax-container {
     height: 520px;
+}
+
+.brand-logo {
+  font-family: 'Permanent Marker', cursive;
+  margin-left: 2%;
+}
+
+h3 {
+  font-family: 'Permanent Marker', cursive;
+  color: white;
+}
+
+h5 {
+  font-family: 'Raleway', sans-serif;
+}
+
+p {
+  font-family: 'Raleway', sans-serif;
+}
+
+/* footer h5 */
+h5.white-text {
+  font-family: 'Permanent Marker', cursive;
+}
+
+/* links */
+a {
+  font-family: 'Raleway', sans-serif;
+}
+
+.input-field {
+  color: white;
+}
+
+/* label focus color */
+.input-field input[type=text]:focus + label {
+  color: rgb(235, 134, 151) !important;
+}
+
+/* label underline focus color */
+.input-field input[type=text]:focus {
+  border-bottom: 1px solid rgb(235, 134, 151) !important;
+  box-shadow: 0 1px 0 0 #000;
+}
+
+/* label focus color - email */
+.input-field input[type=email]:focus + label {
+  color: rgb(235, 134, 151) !important;
+}
+
+/* label underline focus color - email */
+.input-field input[type=email]:focus {
+  border-bottom: 1px solid rgb(235, 134, 151) !important;
+  box-shadow: 0 1px 0 0 #000;
+}
+.input-field {
+  color: white !important;
+}
+
+/* .grid-item { width: 200px; }
+.grid-item--width2 { width: 400px; } */
+.cards-container {
+  column-break-inside: avoid;
+}
+.cards-container .card {
+  display: inline-block;
+  overflow: visible;
+}
+
+@media only screen and (max-width: 600px) {
+  .cards-container {
+    -webkit-column-count: 1;
+    -moz-column-count: 1;
+    column-count: 1;
   }
+}
+@media only screen and (min-width: 601px) {
+  .cards-container {
+    -webkit-column-count: 2;
+    -moz-column-count: 2;
+    column-count: 2;
+  }
+}
+@media only screen and (min-width: 993px) {
+  .cards-container {
+    -webkit-column-count: 3;
+    -moz-column-count: 3;
+    column-count: 3;
+  }
+} 
+
+
+/* Effect 2: Move Up */
+.grid.effect-2 .card.animate {
+	-webkit-transform: translateY(200px);
+	transform: translateY(200px);
+	-webkit-animation: moveUp 0.65s ease forwards;
+	animation: moveUp 0.65s ease forwards;
+}
+
+@-webkit-keyframes moveUp {
+	0% { }
+	100% { -webkit-transform: translateY(0); opacity: 1; }
+}
+
+@keyframes moveUp {
+	0% { }
+	100% { -webkit-transform: translateY(0); transform: translateY(0); opacity: 1; }
+}
+
+
+.text-center {
+  text-align: center;
+}
+
+.submit {
+  margin-left: 1%;
+  margin-bottom: 1%;
+}

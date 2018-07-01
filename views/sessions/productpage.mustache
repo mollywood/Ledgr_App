@@ -3,7 +3,7 @@
 <head>
   <link rel="stylesheet" type="text/css" href="../../storestyles.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-rc.2/css/materialize.min.css">
-  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons|Permanent+Marker|Varela" rel="stylesheet">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 </head>
 <body>
@@ -14,7 +14,7 @@
       <a href="#" class="brand-logo">Stylephile</a>
       <a href="#" data-target="mobile-demo" class="sidenav-trigger"><i class="material-icons">menu</i></a>
       <ul id="nav-mobile" class="right hide-on-med-and-down">
-        <li><a href="./index">Back to home</a></li>
+        <li><a href="../index">Back to home</a></li>
         <li><a href="./cart"><i class='material-icons'>shopping_cart</i></a></li>
         <li><form action="/logOut" method="post">
           <a><button>Logout</button></a>
@@ -42,44 +42,44 @@
     <div class="parallax"><img src="https://i.imgur.com/zEu81YF.jpg"></div>
   </div>
 
+<div class="real-body">
+<!-- Product Cards -->
+<div class="cards-container">
 
-<div class="container">
-
-<div class="grid" data-masonry='{ "columnWidth": 200, "itemSelector": ".grid-item" }'>
-  {{#list}}
-
-    
-    <div class="grid-item">
-      <div class="card">
-        <div class="card-image">
-          <img src="{{productURL}}">
-          <span class="card-title">{{productName}}</span>
-          <form action="/addToCart" method="post">
-          <input type="hidden" name="productID" value="{{id}}" />
-          <input type="hidden" name="name" value="{{productName}}" />
-          <input type="hidden" name="price" value="{{productPrice}}" />
-          <input type="hidden" name="size" value="{{productSize}}" />
-          <input type="hidden" name="color" value="{{productColor}}" />
-          <a onclick="M.toast({html: 'Added to cart!'})" class="btn-floating halfway-fab waves-effect waves-light red"><i class="material-icons">add_shopping_cart</i></a>
+  <div class="row">
+      {{#list}}
+        <div class="card z-depth-4">
+          <div class="card-image">
+            <img src="{{productURL}}">
+            <span class="card-title">{{productName}}</span>
+              <form action="/addToCart" method="post">
+                <input type="hidden" name="productID" value="{{id}}" />
+                <input type="hidden" name="name" value="{{productName}}" />
+                <input type="hidden" name="price" value="{{productPrice}}" />
+                <input type="hidden" name="size" value="{{productSize}}" />
+                <input type="hidden" name="color" value="{{productColor}}" />
+                <a onclick="M.toast({html: 'Added to cart!'})" class="btn-floating halfway-fab waves-effect waves-light red accent-2"><i class="material-icons">add_shopping_cart</i></a>
+          </div>
+          <div class="card-content" height="30px">
+            <p>Price: ${{productPrice}}  |  Color: {{productColor}}  |  Product Size: {{productSize}}</p>
+          <select name="quantityAmt">
+            <option value="0" disabled selected>Qty</option>
+            <option value="1">1</option>
+            <option value="2">2</option>
+            <option value="3">3</option>
+            <option value="4">4</option>
+            <option value="5">5</option>
+            <option value="6">6</option>
+            <option value="7">7</option>
+          </select>
+          </div>
+              </form>
         </div>
-        <div class="card-content" height="30px">
-          <p>Price: ${{productPrice}}  |  Color: {{productColor}}  |  Product Size: {{productSize}}</p>
-        <select class="browser-default" name="quantityAmt">
-              <option value="0" disabled selected>Qty</option>
-              <option value="1">1</option>
-              <option value="2">2</option>
-              <option value="3">3</option>
-              <option value="4">4</option>
-              <option value="5">5</option>
-              <option value="6">6</option>
-              <option value="7">7</option>
-            </select>
-        </div>
-        </form>
-    </div>
-    </div>
-    {{/list}}
+      {{/list}}
+    </div>  
   </div>
+</div>
+
 </div>
 
 <footer class="page-footer black">
@@ -110,4 +110,5 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-rc.2/js/materialize.min.js"></script>
     <script src="https://unpkg.com/masonry-layout@4/dist/masonry.pkgd.js"></script>
+    <script src="AnimOnScroll.js"></script>
     <script src="../../layout.js"></script>
