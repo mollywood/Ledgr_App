@@ -32,9 +32,19 @@ var instance = M.Slider.getInstance(elem);
   instance.prev();
 
 // Masonry
-$('.grid').masonry({
-  columnWidth: 200,
-  itemSelector: '.grid-item'
+var $masonry = $('.grid');
+$masonry.masonry({
+  // set itemSelector so .grid-sizer is not used in layout
+  itemSelector: '.grid-item',
+  // use element for option
+  columnWidth: '200px',
+  // no transitions
+  transitionDuration: 0
+});
+
+// layout Masonry after each image loads
+$masonry.imagesLoaded(function() {
+  $masonry.masonry('layout');
 });
 
 // Material Box
