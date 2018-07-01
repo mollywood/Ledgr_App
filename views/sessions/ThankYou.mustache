@@ -9,10 +9,11 @@
     <a href="#!" class="brand-logo">Style File</a>
     <a href="#" data-target="mobile-demo" class="sidenav-trigger"><i class="material-icons">menu</i></a>
     <ul class="right hide-on-med-and-down">
-      <li><a href="sass.html">Sign Up</a></li>
-      <li><a href="badges.html">Login</a></li>
-      <li><a href="collapsible.html">Admin</a></li>
-      <li><a href="mobile.html">Mobile</a></li>
+      <li><a href="./productpage">Back to Store</a></li>
+      <li><a href="./cart"><i class='material-icons'>shopping_cart</i></a></li>
+      <li><form action="/logOut" method="post">
+        <a><button>Logout</button></a>
+      </form></li>
     </ul>
   </div>
 </nav>
@@ -21,7 +22,8 @@
   <h1>Thank You!</h1>
 
   <h2>Order Confirmation</h2>
-  <h5>Order #{{orderReference}}</h5>
+  {{#order}}
+  <h5>Order #: {{orderReference}}</h5>
 
   <div class="container">
     <div class="col s12 m7">
@@ -30,15 +32,17 @@
       <div class="card-stacked">
         <div class="card-content">
           <p>Order #{{orderReference}}</p>
+          <p>Your order totaling ${{Total}} will be shipped soon.</p>
         </div>
         <div class="card-action">
-          <a href="#">This is a link</a>
+          <a href="#">PRINT ORDER</a>
         </div>
       </div>
     </div>
   </div>
 
   </div>
+  {{/order}}
 
   <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-rc.2/js/materialize.min.js"></script>
 </body>

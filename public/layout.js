@@ -51,4 +51,3 @@ $masonry.imagesLoaded(function() {
 $(document).ready(function(){
   $('.materialboxed').materialbox();
 });
-
