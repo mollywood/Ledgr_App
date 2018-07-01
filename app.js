@@ -29,9 +29,9 @@ app.use(bodyParser.urlencoded({ extended : false }))
 
 // // Sign Up
 
-// app.get('/signIn', function(req,res){
-//       res.render('signin')
-//     })
+app.get('/signup', function(req,res){
+      res.render('signup')
+    })
 
 // app.post('/signUp', function(req, res){
 //     bcrypt.hash(req.body.password, 10, function(err, hash) {

@@ -1,6 +1,8 @@
 <!DOCTYPE html>
 <html>
 <head>
+  <title>Stylephile | Shop</title>
+  <link rel="icon" type="image/x-icon" href="../../discofavicon.png">
   <link rel="stylesheet" type="text/css" href="../../storestyles.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-rc.2/css/materialize.min.css">
   <link href="https://fonts.googleapis.com/icon?family=Material+Icons|Permanent+Marker|Varela" rel="stylesheet">
@@ -11,13 +13,13 @@
 <!-- Navbar -->
   <nav>
     <div class="nav-wrapper">
-      <a href="#" class="brand-logo">Stylephile</a>
+      <a href="../index" class="brand-logo">Stylephile</a>
       <a href="#" data-target="mobile-demo" class="sidenav-trigger"><i class="material-icons">menu</i></a>
       <ul id="nav-mobile" class="right hide-on-med-and-down">
         <li><a href="../index">Back to home</a></li>
         <li><a href="./cart"><i class='material-icons'>shopping_cart</i></a></li>
         <li><form action="/logOut" method="post">
-          <a><button>Logout</button></a>
+          <a><button class="btn-flat white-text">Log Out</button></a>
         </form></li>
       </ul>
     </div>
@@ -48,7 +50,7 @@
 
   <div class="row">
       {{#list}}
-        <div class="card z-depth-4">
+        <div class="card z-depth-4 grid-effect-2 animate">
           <div class="card-image">
             <img src="{{productURL}}">
             <span class="card-title">{{productName}}</span>
