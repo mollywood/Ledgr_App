@@ -39,7 +39,7 @@
        <th>Price</th>
        <th>Quantity</th>
        <th>Item Total</th>
-       <th>          </th> <img src-= <a href
+       <th>          </th>
    </tr>
  </thead>
    {{#shoppingCart}}
@@ -52,14 +52,13 @@
     <td>${{totalAmt}}</td>
     <td><form action="/deleteItem" method="post">
     <input type="hidden" name="delete" value='{{id}}'>
+    <input type="hidden" name="ProductName" value={{ProductName}}>
+    <input type="hidden" name="ProductSize" value={{ProductSize}}>
+    <input type="hidden" name="productQuantity" value={{productQuantity}}>
+    <input type="hidden" name="productID" value={{ProductId}}>
+    <input type="hidden" name="itemQuantity" value={{Quantity}}>
     <button class="waves-effect waves-light btn-small red accent-4">Delete</button>
 </form></td>
-<!-- <td><form class="formDelete" action='/deleteItem' method='post'>
-  <input type="hidden" name="store" value={{store_id}}>
-  <input type="hidden" name="storeName" value={{name}}>
-  <input type="hidden" name="delete" value={{id}}>
-  <input type="submit" value="Delete">
-</form></td> -->
    </tr>
  </tbody>
 
@@ -70,7 +69,11 @@
   <h5>Subtotal: ${{sum}}</h5>
 
   <form action="/checkoutCart" method="post">
-    <input type="hidden" name="productid" value={{id}}>
+    <!-- <input type="hidden" name="productid" value={{id}}> -->
+    <input type="hidden" name="ProductName" value={{ProductName}}>
+    <input type="hidden" name="ProductSize" value={{ProductSize}}>
+    <input type="hidden" name="productQuantity" value={{productQuantity}}>
+    <input type="hidden" name="productId" value={{ProductId}}>
     <input type="hidden" name="sum" value={{sum}}>
     <button class="waves-effect waves-light btn-large red accent-2">Proceed to checkout</button>
   </form>

@@ -2,21 +2,107 @@
 <html lang="en" dir="ltr">
   <head>
     <meta charset="utf-8">
+    <meta name = "viewport" content = "width=device-width, initial-scale=1.0">
     <link rel="icon" type="image/png" href="../../favicon-32x32.png" sizes="32x32" />
     <link rel="icon" type="image/png" href="../../favicon-16x16.png" sizes="16x16" />
-    <title></title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-rc.2/css/materialize.css">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="../../adminstyles.css">
+    <link rel="stylesheet" href="stickyFooter.css">
+    <title>Ledgr | Admin Sign In</title>
+    <style media="screen">
+
+     body {
+       display: flex;
+       min-height: 100vh;
+       flex-direction: column;
+     }
+
+    main {
+     flex: 1 0 auto;
+    }
+     </style>
   </head>
   <body>
-
-    <h2>Sign In</h2>
-    <form action="/adminSignIn" method="post">
+<header>
+  <nav>
+      <div class="nav-wrapper blue">
+          <a href="./adminlanding" class="brand-logo">
+              <img src="../../LEDGR-02.png" class="logo">
+          </a>
+          <a href="#" data-target="mobile-demo" class="sidenav-trigger">
+              <i class="material-icons">menu</i>
+          </a>
+          <ul id="nav-mobile" class="right hide-on-med-and-down">
+              <li><a href="/admin/updatecategories">Update Product Categories</a></li>
+              <li><a href="/admin/updateproducts">Update Products</a></li>
+              <li><a href="/admin/stockonhand">Stock On Hand</a></li>
+              <li><a href="/contactus">Contact Us</a></li>
+              <li><form action="/adminLogOut" method="post">
+                     <a><button class="btn-flat white-text">Log Out</button></a>
+                </form>
+              </li>
+          </ul>
+      </div>
+  </nav>
+  <ul class="sidenav" id="mobile-demo">
+      <li><a href="/admin/updatecategories">Update Product Categories</a></li>
+      <li><a href="/admin/updateproducts">Update Products</a></li>
+      <li><a href="/admin/stockonhand">Stock On Hand</a></li>
+      <li><a href="/contactus">Contact Us</a></li>
+      <li><form action="/adminLogOut" method="post">
+             <a><button class="valign-wrapper btn-flat white-text">Log Out</button></a>
+          </form>
+      </li>
+  </ul>
+</header>
+<main>
+    <div class="row valign-wrapper">
+    <div class="col s12 m4 offset-m4">
+      <div class="card black">
+        <div class="card-content white-text hoverable">
+          <span class="card-title center"><h2>Login</h2></span>
+          <div class="row">
+            <form action="/adminSignIn" method="post" class="col s12">
+              <div class="row">
+                <div class="input-field col s12">
+                  <label for="adminUsernameSI">Username: </label>
+                  <input class="textinput white-text" type="text" name="adminUsernameSI">
+                </div>
+              </div>
+              <div class="row">
+                <div class="input-field col s12">
+                      <label for="adminPasswordSI">Password: </label>
+                      <input class="textinput white-text" type="password" name="adminPasswordSI">
+                      <button class="submitBtnSI btn waves-effect waves-light" type="submit" name="action" />Submit<i class="material-icons right">send</i></button>
+                    </form>
+                </div>
+                <div class="container center">
+                  <p><a href='signin'>Reset password</a></p>
+                </div>
+              </div>
+          </div>
+        </div>
+        </div>
+      </div>
+    </div>
+</main>
+    <!-- <form action="/adminSignIn" method="post">
       <label for="adminUsernameSI">Username: </label>
       <input class="textinput" type="text" name="adminUsernameSI" placeholder="Username...">
-
       <label for="adminPasswordSI">Password: </label>
       <input class="textinput" type="text" name="adminPasswordSI" placeholder="Password...">
       <input class="submitBtnSI" type="submit" />
-    </form>
-
+    </form> -->
+    <footer class="page-footer blue">
+        <div class="footer-copyright">
+            <div class="container">
+                © 2018 Copyright Dream Team
+            </div>
+        </div>
+    </footer>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-rc.2/js/materialize.min.js"></script>
+    <script src="../../layout.js"></script>
   </body>
 </html>
