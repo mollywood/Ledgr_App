@@ -1,7 +1,7 @@
 ## Inventory App
 ## Contents
 * [What It Is](https://github.com/mollywood/Ledgr_App/blob/master/README.md#what-it-is)
-* [What We Used]()
+* [What We Used](https://github.com/mollywood/Ledgr_App/blob/master/README.md#what-we-used)
 * [Challenges and Solutions](https://github.com/mollywood/Ledgr_App/blob/master/README.md#challenges-and-solutions)
 * [MVP](https://github.com/mollywood/Ledgr_App/blob/master/README.md#minimum-viable-product)
 * [Our Stretch Goals](https://github.com/mollywood/Ledgr_App/blob/master/README.md#our-stretch-goals)
