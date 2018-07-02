@@ -28,8 +28,14 @@ Admin Auth./Sign In, Admin Site, Tables, Landing/Store Front, User Auth.
 Shopping Cart, Heroku
 ## Authors
 * [Shawn Benny](https://github.com/sbenn9210)
-* [Gabe Frontera]()
+* [Gabe Frontera](https://github.com/Unclechamps)
 * [Molly Wood](https://github.com/mollywood)
 ## Screenshots
+### Store Side
+![Store Landing Page](https://i.imgur.com/RaOb6m1.png)
+![Store Landing Page](https://i.imgur.com/dYLIF22.png)
+![Sign Up Page](https://i.imgur.com/J9aEEvT.png)
+![Product Page](https://i.imgur.com/RprkVEY.png)
+![Products](https://i.imgur.com/UxGKMFt.png)
 ## Github Link
 ## Code Examples
