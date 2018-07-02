@@ -5,6 +5,7 @@ const pg = require('pg')
 const app = express()
 let models = require('./models')
 const bcrypt = require('bcrypt')
+const PORT = process.env.PORT || 5000
 
 var session = require('express-session')
 
@@ -463,4 +464,4 @@ app.get('/sessions/ThankYou', function(req,res) {
 //   res.render('ThankYou')
 // })
 // Server
-app.listen(3000, () => console.log('I am listening on 3000!'))
+app.listen(PORT, () => console.log('I am listening on ${PORT}!'))
