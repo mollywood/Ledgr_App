@@ -32,10 +32,15 @@ Shopping Cart, Heroku
 * [Molly Wood](https://github.com/mollywood)
 ## Screenshots
 ### Store Side
+Store Landing
 ![Store Landing Page](https://i.imgur.com/RaOb6m1.png)
+Store Landing
 ![Store Landing Page](https://i.imgur.com/dYLIF22.png)
+Customer Sign Up
 ![Sign Up Page](https://i.imgur.com/J9aEEvT.png)
+Storefront
 ![Product Page](https://i.imgur.com/RprkVEY.png)
+Products
 ![Products](https://i.imgur.com/UxGKMFt.png)
 ## Github Link
 ## Code Examples
