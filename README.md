@@ -1,14 +1,14 @@
 ## Inventory App
 ## Contents
-* What It Is
-* What We Used
-* Challenges and Solutions
-* MVP
-* Our Stretch Goals
-* Authors
-* Screenshots
-* Github Link
-* Code Examples
+* [What It Is](https://github.com/mollywood/Ledgr_App/blob/master/README.md#what-it-is)
+* [What We Used]()
+* [Challenges and Solutions](https://github.com/mollywood/Ledgr_App/blob/master/README.md#challenges-and-solutions)
+* [MVP](https://github.com/mollywood/Ledgr_App/blob/master/README.md#minimum-viable-product)
+* [Our Stretch Goals](https://github.com/mollywood/Ledgr_App/blob/master/README.md#our-stretch-goals)
+* [Authors](https://github.com/mollywood/Ledgr_App/blob/master/README.md#authors)
+* [Screenshots](https://github.com/mollywood/Ledgr_App/blob/master/README.md#screenshots)
+* [Github Link](https://github.com/mollywood/Ledgr_App/blob/master/README.md#github-link)
+* [Code Examples](https://github.com/mollywood/Ledgr_App/blob/master/README.md#code-examples)
 ## What It Is
 This is a collaborative project which aims to create an inventory and online sales app for smaller retailers. Intuitive UI. 
 ## What We Used
