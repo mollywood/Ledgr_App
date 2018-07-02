@@ -153,3 +153,8 @@ span {
   max-width: 100%;
 }
 
+.white-background {
+  background-color: white;
+  margin-top: -30px;
+  padding-bottom: 4%;
+}

@@ -17,8 +17,19 @@ This is a collaborative project which aims to create an inventory and online sal
 * PostgreSQL
 * Mustache.js
 * Bcrypt.js
+* MaterializeCSS
+* Masonry
+* Sequelize
+* Express.js
 ## Challenges and Solutions
 ## Minimum Viable Product
 Admin Auth./Sign In, Admin Site, Tables, Landing/Store Front, User Auth.
 ## Our Stretch Goals
 Shopping Cart, Heroku
+## Authors
+* [Shawn Benny](https://github.com/sbenn9210)
+* [Gabe Frontera]()
+* [Molly Wood](https://github.com/mollywood)
+## Screenshots
+## Github Link
+## Code Examples
