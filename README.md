@@ -1,4 +1,4 @@
-## Inventory App
+# Ledgr E-Commerce and Inventory App
 ## Contents
 * [What It Is](https://github.com/mollywood/Ledgr_App/blob/master/README.md#what-it-is)
 * [What We Used](https://github.com/mollywood/Ledgr_App/blob/master/README.md#what-we-used)
@@ -21,6 +21,7 @@ This is a collaborative project which aims to create an inventory and online sal
 * Masonry
 * Sequelize
 * Express.js
+* jQuery
 ## Challenges and Solutions
 ## Minimum Viable Product
 Admin Auth./Sign In, Admin Site, Tables, Landing/Store Front, User Auth.
