@@ -30,9 +30,9 @@ app.use(bodyParser.urlencoded({ extended : false }))
 // // Sign Up
 
 
-app.get('/signIn', function(req,res){
-      res.render('signin')
-    }) 
+app.get('/login', function(req,res){
+      res.render('login')
+    })
 
 app.get('/signup', function(req,res){
       res.render('signup')
@@ -51,14 +51,14 @@ app.post('/signUp', function(req, res){
     }
 
     models.User.create(newUser).then(function(){
-        res.redirect('/signIn')
+        res.redirect('/login')
         })
     })
 })
 
 // Sign In
 
-app.post('/signIn',function(req,res,next){
+app.post('/login',function(req,res,next){
 
     models.User.findOne( {where: {username : req.body.usernameSI}}).then(function(user) {
         bcrypt.compare(req.body.passwordSI, user.password, function(err,result) {
@@ -341,26 +341,23 @@ res.redirect('admin/stockonhand')
 })
 
 // Contact Us
-app.get('/contactus', function(req,res){
-    //models.products.findAll().then(function(products){
-        res.render('contactus')
-    //})
-})
+// app.get('/contactus', function(req,res){
+//     //models.products.findAll().then(function(products){
+//         res.render('contactus')
+//     //})
+// })
 
 app.post('/contactus', function(req,res){
 
-    const { contactName, contactEmail, contactComment} = req.body
-    console.log(contactName, contactEmail, contactComment)
-    let thisComment = global.db.ContactUs.build({
-        contactName : contactName,
-        contactEmail : contactEmail,
-        contactComment : contactComment
-    })
+  let comment = {
+    contactName : req.body.public_name,
+    contactEmail : req.body.email_inline,
+    contactComment : req.body.comment_text
+  }
 
-    thisComment.save().then(function(savedComment){
-        console.log("Saved successful", savedComment)
+    models.ContactUs.create(comment).then(function(){
+        res.redirect('/index')
     })
-    res.redirect('/contactus')
 })
 
 // PUSH TO CART

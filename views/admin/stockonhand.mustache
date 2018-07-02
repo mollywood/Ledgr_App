@@ -8,9 +8,24 @@
     <link rel="stylesheet" type="text/css" href="../../adminstyles.css">
 </head>
 <body>
+  <style media="screen">
+
+   body {
+     display: flex;
+     min-height: 100vh;
+     flex-direction: column;
+   }
+
+  main {
+   flex: 1 0 auto;
+  }
+   </style>
+
+   <header>
+
 
 <nav>
-    <div class="nav-wrapper cyan accent-4">
+    <div class="nav-wrapper blue">
         <a href="./adminlanding" class="brand-logo">
             <img src="../../LEDGR-02.png" class="logo">
         </a>
@@ -22,8 +37,8 @@
             <li><a href="./updateproducts">Update Products</a></li>
             <li class="active"><a href="./stockonhand">Stock On Hand</a></li>
             <li><a href="/contactus">Contact Us</a></li>
-            <li><form action="/adminLogOut" method="post">
-              <a><button>Logout</button></a></li>
+            <li><form class="valign-wrapper" action="/adminLogOut" method="post">
+            <a><button class="btn-flat white-text">Log Out</button></a>
             </form>
         </ul>
     </div>
@@ -34,11 +49,15 @@
     <li><a href="/admin/updateproducts">Update Products</a></li>
     <li><a href="/admin/stockonhand">Stock On Hand</a></li>
     <li><a href="/contactus">Contact Us</a></li>
-    <li><form action="/adminLogOut" method="post">
-            <a><button>Logout</button></a>
+    <li><form class="valign-wrapper" action="/adminLogOut" method="post">
+            <a><button class="btn-flat white-text">Log Out</button></a>
         </form>
     </li>
 </ul>
+</header>
+
+<main>
+
 
 
 <h1>Stock On Hand</h1>
@@ -70,10 +89,10 @@
                                 <div class="modal-footer">
                                 <form action='/deleteproduct' method='POST'>
                                     <input type="hidden" name="id" value={{id}} />
-                                    <button type="submit" value="Delete" class="waves-effect btn-flat waves-light">Delete</button>  
-                                    <a href="#!" class="modal-close waves-effect btn-flat waves-light">Cancel</a> 
+                                    <button type="submit" value="Delete" class="waves-effect btn-flat waves-light">Delete</button>
+                                    <a href="#!" class="modal-close waves-effect btn-flat waves-light">Cancel</a>
                                 </form>
-                                    
+
 
 
 
@@ -85,7 +104,7 @@
 
 
 
-                            
+
                         </td>
                         <td>{{productcategories.productGender}} {{productcategories.productCategory}}</td>
                         <td>{{productName}}</td>
@@ -107,26 +126,10 @@
     </div>
 </div>
 
+</main>
 
+<footer class="page-footer blue">
 
-<footer class="page-footer cyan accent-4">
-    <div class="container">
-        <div class="row">
-            <div class="col l6 s12">
-                <h5 class="white-text">Lorem Footer</h5>
-                <p class="grey-text text-lighten-4">Lorem ipsum dolor amet affogato seitan magna, iPhone dolore post-ironic distillery skateboard typewriter pinterest meggings narwhal. Venmo enamel pin sint echo park pabst, migas brooklyn consequat activated charcoal jianbing twee occupy meditation tumblr hell of. Bitters viral migas austin fanny pack 90's health goth. Mixtape umami fugiat hell of.</p>
-            </div>
-            <div class="col l4 offset-l2 s12">
-                <h5 class="white-text">Links</h5>
-                <ul>
-                  <li><a class="grey-text text-lighten-3" href="#!">Link 1</a></li>
-                  <li><a class="grey-text text-lighten-3" href="#!">Link 2</a></li>
-                  <li><a class="grey-text text-lighten-3" href="#!">Link 3</a></li>
-                  <li><a class="grey-text text-lighten-3" href="#!">Link 4</a></li>
-                </ul>
-            </div>
-        </div>
-    </div>
     <div class="footer-copyright">
         <div class="container">
             © 2018 Copyright Dream Team

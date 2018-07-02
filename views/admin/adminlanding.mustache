@@ -6,11 +6,25 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-rc.2/css/materialize.css">
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <link rel="stylesheet" type="text/css" href="../../adminstyles.css">
+    <style media="screen">
+
+     body {
+       display: flex;
+       min-height: 100vh;
+       flex-direction: column;
+     }
+
+    main {
+     flex: 1 0 auto;
+    }
+     </style>
 </head>
 <body>
 
+  <header>
 <nav>
-    <div class="nav-wrapper cyan accent-4">
+
+    <div class="nav-wrapper blue">
         <a href="./adminlanding" class="brand-logo">
             <img src="../../LEDGR-02.png" class="logo">
         </a>
@@ -22,26 +36,30 @@
             <li><a href="/admin/updateproducts">Update Products</a></li>
             <li><a href="/admin/stockonhand">Stock On Hand</a></li>
             <li><a href="/contactus">Contact Us</a></li>
-            <li><form action="/adminLogOut" method="post">
-                    <a><button>Logout</button></a>
+            <li><form class="valign-wrapper" action="/adminLogOut" method="post">
+                    <a><button class="btn-flat white-text">Log Out</button></a>
                 </form>
             </li>
-            
+
         </ul>
     </div>
-   
-</nav>
 
+</nav>
 <ul class="sidenav" id="mobile-demo">
     <li><a href="/admin/updatecategories">Update Product Categories</a></li>
     <li><a href="/admin/updateproducts">Update Products</a></li>
     <li><a href="/admin/stockonhand">Stock On Hand</a></li>
     <li><a href="/contactus">Contact Us</a></li>
-    <li><form action="/adminLogOut" method="post">
-            <a><button>Logout</button></a>
+    <li><form class="valign-wrapper" action="/adminLogOut" method="post">
+            <a><button class="btn-flat white-text">Log Out</button></a>
         </form>
     </li>
 </ul>
+</header>
+
+
+
+<main>
 
 
 <h1>Welcome to Ledgr!</h1>
@@ -52,25 +70,11 @@
         <p>Cornhole slow-carb lo-fi id plaid. In nostrud palo santo, deep v hot chicken non occupy dreamcatcher yuccie. Aliquip in letterpress scenester commodo, tote bag 90's etsy shoreditch wolf jean shorts. Small batch readymade cloud bread listicle. Aute brooklyn lyft chillwave raclette affogato letterpress adaptogen forage ut butcher fashion axe.</p>
     </div>
 </div>
+</main>
 
-<footer class="page-footer cyan accent-4">
-    <div class="container">
-        <div class="row">
-            <div class="col l6 s12">
-                <h5 class="white-text">Lorem Footer</h5>
-                <p class="grey-text text-lighten-4">Lorem ipsum dolor amet affogato seitan magna, iPhone dolore post-ironic distillery skateboard typewriter pinterest meggings narwhal. Venmo enamel pin sint echo park pabst, migas brooklyn consequat activated charcoal jianbing twee occupy meditation tumblr hell of. Bitters viral migas austin fanny pack 90's health goth. Mixtape umami fugiat hell of.</p>
-            </div>
-            <div class="col l4 offset-l2 s12">
-                <h5 class="white-text">Links</h5>
-                <ul>
-                  <li><a class="grey-text text-lighten-3" href="#!">Link 1</a></li>
-                  <li><a class="grey-text text-lighten-3" href="#!">Link 2</a></li>
-                  <li><a class="grey-text text-lighten-3" href="#!">Link 3</a></li>
-                  <li><a class="grey-text text-lighten-3" href="#!">Link 4</a></li>
-                </ul>
-            </div>
-        </div>
-    </div>
+
+<footer class="page-footer blue">
+
     <div class="footer-copyright">
         <div class="container">
             © 2018 Copyright Dream Team
