@@ -10,3 +10,11 @@ p.contact {
 img {
     height: 3em;
 }
+
+.tdDelete {
+  padding-bottom: 10px;
+}
+
+.deleteInput {
+  height:22.5px; 
+}

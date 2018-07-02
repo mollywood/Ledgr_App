@@ -306,12 +306,14 @@ app.get('/admin/stockonhand', function(req,res){
 
 app.post('/deleteproduct',function(req,res){
     let productID = req.body.id
-
+    console.log(productID)
+    console.log(req.body.itemname)
     models.Products.find({
         where: { id: productID}
     }).then((result) => {
         return models.Products.destroy({ where: {id: productID}})
-            .then((u) => { res.redirect('admin/stockonhand') });
+            .then(() => {
+     res.redirect('admin/stockonhand') });
     });
 
 })

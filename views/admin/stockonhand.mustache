@@ -79,31 +79,32 @@
             <tbody>
                 {{#list}}
                     <tr>
-                        <td>
-                            <a class="btn-floating btn-small waves-effect waves-light modal-trigger" href="#modal1"><i class="material-icons">delete</i></a>
-                            <div id="modal1" class="modal">
+                        <td class="tdDelete">
+                            <!-- <a class="btn-floating btn-small waves-effect waves-light modal-trigger" href="#modal1"><i class="material-icons">delete</i></a> -->
+                            <form class='valign-wrapper' action='/deleteproduct' method='post'>
+                                <input type="hidden" name="id" value={{id}} />
+                                <input type="hidden" name="itemname" value={{productName}}/>
+
+                                <input type="submit" value="Delete" class="btn-flat valign-wrapper deleteInput"></input>
+                                <!-- <a href="#!" class="modal-close waves-effect btn-flat waves-light">Cancel</a> -->
+                            </form>
+                            <!-- <div id="modal1" class="modal">
                                 <div class="modal-content">
                                     <h4>Are you sure?</h4>
                                     <p>This will permanently delete this product from your inventory. Do you want to continue?</p>
                                 </div>
                                 <div class="modal-footer">
-                                <form action='/deleteproduct' method='POST'>
+                                <form action='/deleteproduct' method='post'>
                                     <input type="hidden" name="id" value={{id}} />
-                                    <button type="submit" value="Delete" class="waves-effect btn-flat waves-light">Delete</button>
+                                    <input type="hidden" name="itemname" value={{productName}}/>
+
+                                    <button type="submit" class="waves-effect btn-flat waves-light">Delete</button>
                                     <a href="#!" class="modal-close waves-effect btn-flat waves-light">Cancel</a>
                                 </form>
 
-
-
-
-
-
                                 <a href="#!" class="modal-close waves-effect waves-green btn-flat">Agree</a>
                                 </div>
-                            </div>
-
-
-
+                            </div> -->
 
                         </td>
                         <td>{{productcategories.productGender}} {{productcategories.productCategory}}</td>
