@@ -1,19 +1,23 @@
 <head>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-rc.2/css/materialize.min.css">
-    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-    <link rel="stylesheet" type="text/css" href="cart.css">
+  <title>Stylephile | Shop</title>
+  <link rel="icon" type="image/x-icon" href="../../discofavicon.png">
+  <link rel="stylesheet" type="text/css" href="../../storestyles.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-rc.2/css/materialize.min.css">
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons|Permanent+Marker|Varela" rel="stylesheet">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
 </head>
 <body>
   <body>
-    <nav>
-    <div class="nav-wrapper black">
-      <a href="#!" class="brand-logo">Style File</a>
+<!-- Navbar -->
+  <nav>
+    <div class="nav-wrapper">
+      <a href="../index" class="brand-logo">Stylephile</a>
       <a href="#" data-target="mobile-demo" class="sidenav-trigger"><i class="material-icons">menu</i></a>
-      <ul class="right hide-on-med-and-down">
-        <li><a href="./productpage">Back to Store</a></li>
+      <ul id="nav-mobile" class="right hide-on-med-and-down">
+        <li><a href="../index">Back to home</a></li>
         <li><a href="./cart"><i class='material-icons'>shopping_cart</i></a></li>
-        <li><form action="/logOut" method="post">
-          <a><button>Logout</button></a>
+        <li><form action="/logOut" method="post" class="valign-wrapper">
+          <a><button class="btn-flat white-text">Log Out</button></a>
         </form></li>
       </ul>
     </div>
@@ -25,7 +29,7 @@
     <li><a href="collapsible.html">Javascript</a></li>
     <li><a href="mobile.html">Mobile</a></li>
   </ul>
-
+<div class="white-background">
 <div class="ledgrTable container">
   <h3>Shopping Cart</h3>
   <table>
@@ -68,41 +72,42 @@
   <form action="/checkoutCart" method="post">
     <input type="hidden" name="productid" value={{id}}>
     <input type="hidden" name="sum" value={{sum}}>
-    <button class="waves-effect waves-light btn-large green accent-4">Proceed to checkout</button>
+    <button class="waves-effect waves-light btn-large red accent-2">Proceed to checkout</button>
   </form>
 
 </div>
 </div>
-
-<!-- <footer class="page-footer black">
-<div class="container">
-  <div class="row">
-    <div class="col l6 s12">
-      <h5 class="white-text">Footer Content</h5>
-      <p class="grey-text text-lighten-4">You can use rows and columns here to organize your footer content.</p>
-    </div>
-    <div class="col l4 offset-l2 s12">
-      <h5 class="white-text">Links</h5>
-      <ul>
-        <li><a class="grey-text text-lighten-3" href="#!">Link 1</a></li>
-        <li><a class="grey-text text-lighten-3" href="#!">Link 2</a></li>
-        <li><a class="grey-text text-lighten-3" href="#!">Link 3</a></li>
-        <li><a class="grey-text text-lighten-3" href="#!">Link 4</a></li>
-      </ul>
-    </div>
-  </div>
 </div>
-<div class="footer-copyright">
-  <div class="container">
-  © 2014 Copyright Text
-  <a class="grey-text text-lighten-4 right" href="#!">More Links</a>
-  </div>
-</div>
-</footer> -->
 
 
-
-
-<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-rc.2/js/materialize.min.js"></script>
+<footer class="page-footer black">
+    <div class="container">
+      <div class="row">
+        <div class="col l6 s12">
+          <h5 class="white-text">Stylephile</h5>
+          <p class="grey-text text-lighten-4">We're your hookup for all of your sartorial needs. We obsessively curate the best and the boldest fashions from around the globe, and bring it straight to you. No matter where you're going, we'll make sure that you arrive there in style.</p>
+        </div>
+        <div class="col l4 offset-l2 s12">
+          <h5 class="white-text">Links</h5>
+          <ul>
+            <li><a class="grey-text text-lighten-3" href="/index">Home</a></li>
+            <li><a class="grey-text text-lighten-3" href="/sessions/productpage">Shop</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <div class="footer-copyright">
+      <div class="container">
+      © 2018 Dream Team
+      <a class="grey-text text-lighten-4 right" href="/adminSignIn">Admin</a>
+      </div>
+    </div>
+  </footer>
 
 </body>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-rc.2/js/materialize.min.js"></script>
+    <script src="https://unpkg.com/masonry-layout@4/dist/masonry.pkgd.js"></script>
+    <script src="AnimOnScroll.js"></script>
+    <script src="../../layout.js"></script>
+

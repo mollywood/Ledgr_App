@@ -167,10 +167,10 @@ app.get('/signup', function(req,res){
 //     res.redirect('/adminSignIn')
 // })
 
-// //LOGIN
-// app.get('/login', function(req,res) {
-//   res.render('login')
-// })
+//LOGIN
+app.get('/login', function(req,res) {
+  res.render('login')
+})
 
 
 
