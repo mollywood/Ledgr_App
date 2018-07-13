@@ -33,7 +33,7 @@ Update Categories
 Update Products
 ![Update Products Page](https://i.imgur.com/ZDj4XR4.png)
 Stock On Hand
-![Stock On Hand Page(https://i.imgur.com/txOWez0.png)
+![Stock On Hand Page](https://i.imgur.com/txOWez0.png)
 ## What It Is
 Ledgr is an inventoy management system that allows small business owners track, manage and modify inventory through an easy to use interface. Ledgr is able to power any store front (Stylephile as an example) with up-to-date balances and available products.
 
