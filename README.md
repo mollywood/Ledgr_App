@@ -2,7 +2,8 @@
 
 ## [Website](https://radiant-thicket-73579.herokuapp.com/index)
 
-## [Demo Video](https://youtu.be/Utf02CC81J0)
+## Demo Videos
+* [Stylephile](https://youtu.be/Utf02CC81J0)
 
 ## Contents
 * [Screenshots](https://github.com/mollywood/Ledgr_App/blob/master/README.md#screenshots)
