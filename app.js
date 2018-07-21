@@ -202,16 +202,6 @@ app.get('/sessions/productpage', function(req,res){
     })
 })
 
-// app.get('/sessions/productpage', function(req,res){
-//     let thisCat = req.body.selectedCat
-
-//     models.Products.findAll({
-//         where: { productCategoryID : thisCat}
-//     }).then((result) => {
-//         res.render('product', {list: products})
-//     })
-// })
-
 // Cart
 
 function addValues(items) {
@@ -344,11 +334,7 @@ res.redirect('admin/stockonhand')
 })
 
 // Contact Us
-// app.get('/contactus', function(req,res){
-//     //models.products.findAll().then(function(products){
-//         res.render('contactus')
-//     //})
-// })
+
 
 app.post('/contactus', function(req,res){
 
