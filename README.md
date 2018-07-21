@@ -1,5 +1,6 @@
 # Ledgr E-Commerce and Inventory App
 
+
 ## [Website](https://radiant-thicket-73579.herokuapp.com/index)
 
 ## Demo Videos
@@ -42,6 +43,7 @@ Update Products
 ![Update Products](https://www.dropbox.com/s/2b9xmw0bbbm7zr4/Screen%20Shot%202018-07-13%20at%209.49.40%20AM.png?raw=1)
 Stock On Hand
 ![Stock On Hand](https://www.dropbox.com/s/jk5mumix5hc0i2y/Screen%20Shot%202018-07-13%20at%209.49.53%20AM.png?raw=1)
+
 
 ## What It Is
 Ledgr is an inventoy management system that allows small business owners track, manage and modify inventory through an easy to use interface. Ledgr is able to power any store front (Stylephile as an example) with up-to-date balances and available products.

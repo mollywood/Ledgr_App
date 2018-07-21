@@ -31,6 +31,7 @@ var instance = M.Slider.getInstance(elem);
   instance.next();
   instance.prev();
 
+
 // Masonry
 var $masonry = $('.grid');
 $masonry.masonry({
