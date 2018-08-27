@@ -1,7 +1,7 @@
 # Ledgr E-Commerce and Inventory App
 
 
-## [Website](https://radiant-thicket-73579.herokuapp.com/index)
+## [Website](https://ledgr-app.herokuapp.com/index)
 
 ## Demo Videos
 * [Stylephile](https://youtu.be/Utf02CC81J0)
